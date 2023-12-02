@@ -6,8 +6,8 @@ import scala.util.Using
 object Day1:
   /**
    * Alternative:
-   * // val digits = line.collect { case c if c.isDigit => c.asDigit }
-   * // digits.head * 10 + digits.last
+   * val digits = line.collect { case c if c.isDigit => c.asDigit }
+   * digits.head * 10 + digits.last
    */
   def calibrationValue(line: String): Int =
     (for
