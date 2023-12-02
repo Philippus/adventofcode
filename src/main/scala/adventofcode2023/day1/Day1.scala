@@ -4,11 +4,12 @@ import scala.io.Source
 import scala.util.Using
 
 object Day1:
-  /**
-   * Alternative:
-   * val digits = line.collect { case c if c.isDigit => c.asDigit }
-   * digits.head * 10 + digits.last
-   */
+  /** Alternative:
+    *
+    * val digits = line.collect { case c if c.isDigit => c.asDigit }
+    *
+    * digits.head * 10 + digits.last
+    */
   def calibrationValue(line: String): Int =
     (for
       firstDigit <- line.find(_.isDigit)
@@ -23,7 +24,9 @@ object Day1:
       .flatMap(i => candidates.filter(line.substring(i).startsWith))
       .map(d => (candidates.indexOf(d) % 9) + 1).mkString.toInt
 
-  /** run on the console like this: scala> import adventofcode2023.day1._ import adventofcode2023.day1._
+  /** run on the console like this:
+    *
+    * scala> import adventofcode2023.day1._ import adventofcode2023.day1._
     *
     * scala> Day1.readCalibrationDocument(Day1.calibrationValue) val res0: Int = ???
     *
