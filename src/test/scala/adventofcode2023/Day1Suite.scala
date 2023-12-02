@@ -9,7 +9,7 @@ class Day1Suite extends FunSuite:
     assertEquals(calibrationValue("1abc2"), 12)
     assertEquals(calibrationValue("pqr3stu8vwx"), 38)
     assertEquals(calibrationValue("a1b2c3d4e5f"), 15)
-    assertEquals(calibrationValue("reb7uchet"), 77)
+    assertEquals(calibrationValue("treb7uchet"), 77)
 
   test("finds correct calibration value for a a line in part two"):
     assertEquals(calibrationValuePartTwo("two1nine"), 29)
