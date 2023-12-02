@@ -2,7 +2,7 @@ package adventofcode2023
 
 import munit.FunSuite
 
-import day1.Day1._
+import day1.Day1.*
 
 class Day1Suite extends FunSuite:
   test("finds correct calibration value for a line"):

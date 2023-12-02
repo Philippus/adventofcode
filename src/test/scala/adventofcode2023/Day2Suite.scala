@@ -2,7 +2,7 @@ package adventofcode2023
 
 import munit.FunSuite
 
-import day2.Day2._
+import day2.Day2.*
 
 class Day2Suite extends FunSuite:
   test("finds possible game for a line"):
