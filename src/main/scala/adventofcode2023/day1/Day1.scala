@@ -20,6 +20,17 @@ object Day1 {
       .map(d => (candidates.indexOf(d) % 9) + 1).mkString.toInt
   }
 
+  /**
+   * run on the console like this:
+   * scala> import adventofcode2023.day1._
+   * import adventofcode2023.day1._
+   *
+   * scala> Day1.readCalibrationDocument(Day1.calibrationValue)
+   * val res0: Int = ???
+   *
+   * scala> Day1.readCalibrationDocument(Day1.calibrationValuePartTwo)
+   * val res1: Int = ???
+   */
   def readCalibrationDocument(calibrationFunction: String => Int): Int = {
     Using.resource(Source.fromResource("day1input.txt")) {
       _.getLines().map(calibrationFunction).sum
