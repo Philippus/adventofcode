@@ -24,7 +24,7 @@ class Day2Suite extends FunSuite:
   test("day two part one input file"):
     assertEquals(readInputDocument(possibleGame, 12, 13, 14), 2207)
 
-  test("finds possible game for a line"):
+  test("calculates correct power of a game"):
     assertEquals(
       powerGame("Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green", red = 12, green = 13, blue = 14),
       48
