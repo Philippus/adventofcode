@@ -25,7 +25,7 @@ class Day2Suite extends ScalaCheckSuite {
     assertEquals(powerGame("Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green", 12, 13, 14), 36)
   }
 
-  property("day two part one input file") {
+  property("day two part two input file") {
     assertEquals(readInputDocument(powerGame, 0, 0, 0), 62241)
   }
 }
