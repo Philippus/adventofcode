@@ -36,4 +36,13 @@ class Day3Suite extends FunSuite:
     val filtered = filterAdjacent(numbers, symbols)
 
     assertEquals(filtered.map(_.value.toInt).sum, 4361)
+
+  test("calculates sum of parts for the input file"):
+    assertEquals(readInputDocument, 546563)
+
+  test("finds gears for a line"):
+    assertEquals(findGears("617*......", 0), Seq(Pos(3, 0)))
+
+  test("calculates gears for the input file"):
+    assertEquals(readInputDocumentForGearRatios, 91031374)
 end Day3Suite

@@ -64,14 +64,9 @@ object Day3:
     for
       number         <- numbers
       symbolPosition <- symbolPositions // number is valid if it has an adjacent symbol
-      if number.positions.contains(Pos(symbolPosition.x, symbolPosition.y + 1)) ||
-        number.positions.contains(Pos(symbolPosition.x + 1, symbolPosition.y)) ||
-        number.positions.contains(Pos(symbolPosition.x, symbolPosition.y - 1)) ||
-        number.positions.contains(Pos(symbolPosition.x - 1, symbolPosition.y)) ||
-        number.positions.contains(Pos(symbolPosition.x - 1, symbolPosition.y - 1)) ||
-        number.positions.contains(Pos(symbolPosition.x + 1, symbolPosition.y + 1)) ||
-        number.positions.contains(Pos(symbolPosition.x + 1, symbolPosition.y - 1)) ||
-        number.positions.contains(Pos(symbolPosition.x - 1, symbolPosition.y + 1))
+      if number.positions.exists(pos =>
+        symbolPosition.x >= pos.x - 1 && symbolPosition.x <= pos.x + 1 &&
+        symbolPosition.y >= pos.y - 1 && symbolPosition.y <= pos.y + 1)
     yield number
 
   def findGearRatios(gears: Seq[Pos], numbers: Seq[Number]): Seq[Int] =
