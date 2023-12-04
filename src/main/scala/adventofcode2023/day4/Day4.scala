@@ -6,22 +6,19 @@ import scala.util.Using
 
 object Day4 {
   def calculateScratchCardScore(line: String): Int =
-    val Array(card, numbers)                               = line.split(": ")
-    val Array(winningNumbersAsString, cardNumbersAsString) = numbers.trim.split('|')
-    val winningNumbers                                     = winningNumbersAsString.trim.split("\\s+")
-    val cardNumbers                                        = cardNumbersAsString.trim.split("\\s+")
-    val myWinningNumbers                                   = cardNumbers.filter(winningNumbers.contains(_))
+    val (cardNumber, winningNumbers, cardNumbers) = line match
+      case s"Card $c: $w | $n" => (c.trim, w.trim.split("\\s+"), n.trim.split("\\s+"))
+    val myWinningNumbers                          = cardNumbers.intersect(winningNumbers)
+
     if myWinningNumbers.isEmpty
     then 0
     else scala.math.pow(2, myWinningNumbers.length - 1).toInt
 
   def determineCopies(line: String): Seq[Int] =
-    val Array(card, numbers)                               = line.split(": ")
-    val Array(_, cardNumber)                               = card.split("Card\\s+")
-    val Array(winningNumbersAsString, cardNumbersAsString) = numbers.trim.split('|')
-    val winningNumbers                                     = winningNumbersAsString.trim.split("\\s+")
-    val cardNumbers                                        = cardNumbersAsString.trim.split("\\s+")
-    val myWinningNumbers                                   = cardNumbers.filter(winningNumbers.contains(_))
+    val (cardNumber, winningNumbers, cardNumbers) = line match
+      case s"Card $c: $w | $n" => (c.trim, w.trim.split("\\s+"), n.trim.split("\\s+"))
+    val myWinningNumbers                          = cardNumbers.intersect(winningNumbers)
+
     Range(cardNumber.toInt + 1, cardNumber.toInt + 1 + myWinningNumbers.length)
 
   def readInputDocument: Int =
