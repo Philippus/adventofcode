@@ -4,7 +4,7 @@ import scala.annotation.tailrec
 import scala.io.Source
 import scala.util.Using
 
-object Day4 {
+object Day4:
   def calculateScratchCardScore(line: String): Int =
     val (cardNumber, winningNumbers, cardNumbers) = line match
       case s"Card $c: $w | $n" => (c.trim, w.trim.split("\\s+"), n.trim.split("\\s+"))
@@ -36,4 +36,4 @@ object Day4 {
     Using.resource(Source.fromResource("day4input.txt")): source =>
       val lines = source.getLines.toSeq
       calculateNumberOfCardsForDocumentHelper(Range.inclusive(1, lines.length), lines, 0)
-}
+end Day4
