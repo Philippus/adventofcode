@@ -6,17 +6,14 @@ import scala.util.Using
 
 object Day4 {
   def calculateScratchCardScore(line: String): Int =
-    @tailrec
-    def calculateScore(numbers: Array[String], acc: Int): Int =
-      if numbers.isEmpty then acc
-      else if acc == 0 then calculateScore(numbers.tail, 1)
-      else calculateScore(numbers.tail, acc * 2)
-    val Array(card, numbers)                                  = line.split(": ")
-    val Array(winningNumbersAsString, cardNumbersAsString)    = numbers.trim.split('|')
-    val winningNumbers                                        = winningNumbersAsString.trim.split("\\s+")
-    val cardNumbers                                           = cardNumbersAsString.trim.split("\\s+")
-    val myWinningNumbers                                      = cardNumbers.filter(winningNumbers.contains(_))
-    calculateScore(myWinningNumbers, 0)
+    val Array(card, numbers)                               = line.split(": ")
+    val Array(winningNumbersAsString, cardNumbersAsString) = numbers.trim.split('|')
+    val winningNumbers                                     = winningNumbersAsString.trim.split("\\s+")
+    val cardNumbers                                        = cardNumbersAsString.trim.split("\\s+")
+    val myWinningNumbers                                   = cardNumbers.filter(winningNumbers.contains(_))
+    if myWinningNumbers.isEmpty
+    then 0
+    else scala.math.pow(2, myWinningNumbers.length - 1).toInt
 
   def determineCopies(line: String): Seq[Int] =
     val Array(card, numbers)                               = line.split(": ")
