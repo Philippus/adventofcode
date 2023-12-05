@@ -7,7 +7,7 @@ object Day4:
 
   def md5(s: String): String =
     val hash = messageDigest.digest(s.getBytes)
-    val hex = new StringBuilder()
+    val hex  = new StringBuilder()
     for (b <- hash)
       hex.append(String.format("%02x", b))
     hex.toString

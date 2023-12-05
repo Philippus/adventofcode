@@ -12,10 +12,10 @@ object Day1:
       _.getLines().map(findFloor).toSeq.head
 
   def findFirstPositionInBasement(line: String): Int =
-    var currentFloor = 0
-    var position = 0
+    var currentFloor             = 0
+    var position                 = 0
     var passedBasementAtPosition = 0
-    line.foreach( char =>
+    line.foreach(char =>
       position += 1
       if char == '(' then currentFloor += 1
       else currentFloor -= 1

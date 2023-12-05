@@ -13,7 +13,7 @@ object Day3:
       if line.isEmpty then visitedHouses
       else
         val currentChar = line.head
-        val nextPos = currentChar match
+        val nextPos     = currentChar match
           case '^' => currentPosition.copy(y = currentPosition.y + 1)
           case 'v' => currentPosition.copy(y = currentPosition.y - 1)
           case '>' => currentPosition.copy(x = currentPosition.x + 1)
@@ -22,7 +22,7 @@ object Day3:
     helper(line, Pos(0, 0), Set(Pos(0, 0)))
 
   def determineVisitedHousesWithRoboSanta(line: String): Set[Pos] =
-    val odd = line.zipWithIndex.filter(_._2 % 2 == 1).map(_._1).mkString
+    val odd  = line.zipWithIndex.filter(_._2 % 2 == 1).map(_._1).mkString
     val even = line.zipWithIndex.filter(_._2 % 2 == 0).map(_._1).mkString
     determineVisitedHouses(odd) ++ determineVisitedHouses(even)
 

@@ -20,4 +20,3 @@ class Day3Suite extends FunSuite:
   test("calculates the amount of visited houses with a robo santa in play"):
     assertEquals(calculatedVisitedHousesWithRoboSantaForFile, 2639)
 end Day3Suite
-
