@@ -17,7 +17,7 @@ class Day3Suite extends FunSuite:
     assertEquals(determineVisitedHousesWithRoboSanta("^>v<").size, 3)
     assertEquals(determineVisitedHousesWithRoboSanta("^v^v^v^v^v").size, 11)
 
-  test("calculates the amount of visited houses  with a robo santa in play"):
+  test("calculates the amount of visited houses with a robo santa in play"):
     assertEquals(calculatedVisitedHousesWithRoboSantaForFile, 2639)
 end Day3Suite
 
