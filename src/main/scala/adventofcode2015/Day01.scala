@@ -3,12 +3,12 @@ package adventofcode2015
 import scala.io.Source
 import scala.util.Using
 
-object Day1:
+object Day01:
   def findFloor(line: String): Int =
     line.count(_.==('(')) - line.count(_.==(')'))
 
   def findFloorForInputFile: Int =
-    Using.resource(Source.fromResource("2015/day1input.txt")):
+    Using.resource(Source.fromResource("2015/day01input.txt")):
       _.getLines().map(findFloor).toSeq.head
 
   def findFirstPositionInBasement(line: String): Int =
@@ -26,6 +26,6 @@ object Day1:
     passedBasementAtPosition
 
   def findPositionForInputFile: Int =
-    Using.resource(Source.fromResource("2015/day1input.txt")):
+    Using.resource(Source.fromResource("2015/day01input.txt")):
       _.getLines().map(findFirstPositionInBasement).toSeq.head
-end Day1
+end Day01

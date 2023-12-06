@@ -2,9 +2,9 @@ package adventofcode2015
 
 import munit.FunSuite
 
-import Day1.*
+import Day01.*
 
-class Day1Suite extends FunSuite:
+class Day01Suite extends FunSuite:
   test("finds the right floor"):
     assertEquals(findFloor("(())"), 0)
     assertEquals(findFloor("(()(()("), 3)
@@ -18,4 +18,4 @@ class Day1Suite extends FunSuite:
 
   test("finds the right position for the input file"):
     assertEquals(findPositionForInputFile, 1795)
-end Day1Suite
+end Day01Suite

@@ -1,9 +1,9 @@
 package adventofcode2015
 
-import adventofcode2015.Day4.*
+import adventofcode2015.Day04.*
 import munit.FunSuite
 
-class Day4Suite extends FunSuite:
+class Day04Suite extends FunSuite:
   test("md5 returns the correct hex string"):
     assert(md5("abcdef609043").startsWith("00000"))
 
@@ -16,4 +16,4 @@ class Day4Suite extends FunSuite:
 
   test("determines the secret key for the input string with six zeroes"):
     assertEquals(determineSecretKey("yzbqklnj", 6), 9962624)
-end Day4Suite
+end Day04Suite

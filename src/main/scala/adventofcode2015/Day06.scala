@@ -3,7 +3,7 @@ package adventofcode2015
 import scala.io.Source
 import scala.util.Using
 
-object Day6:
+object Day06:
   var grid: Array[Array[Boolean]] = Array.fill(1000)(Array.fill(1000)(false))
 
   def getCoordinates(startx: String, endx: String, starty: String, endy: String): Seq[(Int, Int)] =
@@ -25,7 +25,7 @@ object Day6:
           .foreach((x, y) => grid(x)(y) = !grid(x)(y))
 
   def calculateLitLights: Int =
-    Using.resource(Source.fromResource("2015/day6input.txt")):
+    Using.resource(Source.fromResource("2015/day06input.txt")):
       _.getLines().foreach(manipulateGrid)
     grid.flatten.count(_ == true)
 
@@ -47,7 +47,7 @@ object Day6:
     dimmableGrid = Array.fill(1000)(Array.fill(1000)(0))
 
   def calculateBrightness: Int =
-    Using.resource(Source.fromResource("2015/day6input.txt")):
+    Using.resource(Source.fromResource("2015/day06input.txt")):
       _.getLines().foreach(manipulateBrightness)
     dimmableGrid.flatten.sum
-end Day6
+end Day06

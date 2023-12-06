@@ -1,9 +1,9 @@
 package adventofcode2015
 
-import adventofcode2015.Day2.*
+import adventofcode2015.Day02.*
 import munit.FunSuite
 
-class Day2Suite extends FunSuite:
+class Day02Suite extends FunSuite:
   test("calculates the correct amount of wrapping paper needed for a box"):
     assertEquals(Box(2, 3, 4).wrappingPaperNeeded, 58)
     assertEquals(Box(1, 1, 10).wrappingPaperNeeded, 43)
@@ -18,4 +18,4 @@ class Day2Suite extends FunSuite:
   test("calculates the right amount of ribbon needed"):
     assertEquals(calculateRibbonNeeded, 3812909)
 
-end Day2Suite
+end Day02Suite

@@ -1,9 +1,9 @@
 package adventofcode2015
 
-import adventofcode2015.Day5.*
+import adventofcode2015.Day05.*
 import munit.FunSuite
 
-class Day5Suite extends FunSuite:
+class Day05Suite extends FunSuite:
   test("determines niceness of strings"):
     assert(isNice("ugknbfddgicrmopn"))
     assert(isNice("aaa"))
@@ -21,4 +21,4 @@ class Day5Suite extends FunSuite:
 
   test("calculates amount of nice strings in input file for part two"):
     assertEquals(determineNiceStringsForFile(isNicePartTwo), 55)
-end Day5Suite
+end Day05Suite

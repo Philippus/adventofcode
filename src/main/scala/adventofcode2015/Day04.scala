@@ -2,7 +2,7 @@ package adventofcode2015
 
 import java.security.MessageDigest
 
-object Day4:
+object Day04:
   val messageDigest: MessageDigest = MessageDigest.getInstance("MD5")
 
   def md5(s: String): String =
@@ -18,4 +18,4 @@ object Day4:
     while (!md5(s"$line$i").startsWith(zeroes))
       i += 1
     i
-end Day4
+end Day04

@@ -1,9 +1,9 @@
 package adventofcode2015
 
-import adventofcode2015.Day6.*
+import adventofcode2015.Day06.*
 import munit.FunSuite
 
-class Day6Suite extends FunSuite:
+class Day06Suite extends FunSuite:
   test("can turn on lights"):
     manipulateGrid("turn on 0,0 through 999,999")
     assertEquals(grid.flatten.count(_.==(true)), 1000000)
@@ -44,4 +44,4 @@ class Day6Suite extends FunSuite:
   test("calculates brightness after running the commands"):
     resetDimmableGrid()
     assertEquals(calculateBrightness, 14110788)
-end Day6Suite
+end Day06Suite

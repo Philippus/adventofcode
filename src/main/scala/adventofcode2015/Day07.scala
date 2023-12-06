@@ -4,7 +4,7 @@ import scala.annotation.tailrec
 import scala.io.Source
 import scala.util.{Try, Using}
 
-object Day7:
+object Day07:
   case class Wire(id: String, signal: Int)
 
   @tailrec
@@ -68,12 +68,12 @@ object Day7:
           runConnection(connections.tail :+ connection, wires)
 
   def runCircuit: Int =
-    Using.resource(Source.fromResource("2015/day7input.txt")): source =>
+    Using.resource(Source.fromResource("2015/day07input.txt")): source =>
       val lines = source.getLines().toSeq
       runConnection(lines, Set.empty[Wire]).find(_.id == "a").get.signal
 
   def runCircuitAfterRewiring: Int =
-    Using.resource(Source.fromResource("2015/day7input.txt")): source =>
+    Using.resource(Source.fromResource("2015/day07input.txt")): source =>
       val lines = source.getLines().toSeq
       runConnection(lines, Set(Wire("b", runCircuit))).find(_.id == "a").get.signal
-end Day7
+end Day07

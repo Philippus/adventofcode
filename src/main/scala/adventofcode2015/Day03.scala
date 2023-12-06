@@ -4,7 +4,7 @@ import scala.annotation.tailrec
 import scala.io.Source
 import scala.util.Using
 
-object Day3:
+object Day03:
   case class Pos(x: Int, y: Int)
 
   def determineVisitedHouses(line: String): Set[Pos] =
@@ -27,14 +27,14 @@ object Day3:
     determineVisitedHouses(odd) ++ determineVisitedHouses(even)
 
   def calculatedVisitedHousesForFile: Int =
-    Using.resource(Source.fromResource("2015/day3input.txt")):
+    Using.resource(Source.fromResource("2015/day03input.txt")):
       _.getLines().map(line =>
         determineVisitedHouses(line)
       ).toSeq.head.size
 
   def calculatedVisitedHousesWithRoboSantaForFile: Int =
-    Using.resource(Source.fromResource("2015/day3input.txt")):
+    Using.resource(Source.fromResource("2015/day03input.txt")):
       _.getLines().map(line =>
         determineVisitedHousesWithRoboSanta(line)
       ).toSeq.head.size
-end Day3
+end Day03

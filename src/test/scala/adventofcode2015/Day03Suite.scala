@@ -1,9 +1,9 @@
 package adventofcode2015
 
-import adventofcode2015.Day3.*
+import adventofcode2015.Day03.*
 import munit.FunSuite
 
-class Day3Suite extends FunSuite:
+class Day03Suite extends FunSuite:
   test("determines the amount of visited houses"):
     assertEquals(determineVisitedHouses(">").size, 2)
     assertEquals(determineVisitedHouses("^>v<").size, 4)
@@ -19,4 +19,4 @@ class Day3Suite extends FunSuite:
 
   test("calculates the amount of visited houses with a robo santa in play"):
     assertEquals(calculatedVisitedHousesWithRoboSantaForFile, 2639)
-end Day3Suite
+end Day03Suite

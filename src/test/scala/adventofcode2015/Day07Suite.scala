@@ -3,10 +3,10 @@ package adventofcode2015
 import scala.io.Source
 import scala.util.Using
 
-import adventofcode2015.Day7.*
+import adventofcode2015.Day07.*
 import munit.FunSuite
 
-class Day7Suite extends FunSuite:
+class Day07Suite extends FunSuite:
   test("test signal"):
     assertEquals(runConnection(Seq("123 -> x")), Set(Wire("x", 123)))
 
@@ -24,4 +24,4 @@ class Day7Suite extends FunSuite:
 
   test("calculates signal on wire a after rewiring in part two"):
     assertEquals(runCircuitAfterRewiring, 14710)
-end Day7Suite
+end Day07Suite

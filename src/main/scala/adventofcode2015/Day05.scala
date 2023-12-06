@@ -4,7 +4,7 @@ import scala.annotation.tailrec
 import scala.io.Source
 import scala.util.Using
 
-object Day5:
+object Day05:
   def isVowel(c: Char): Boolean =
     Set('a', 'e', 'i', 'o', 'u').contains(c)
 
@@ -19,7 +19,7 @@ object Day5:
   def isNaughty(str: String): Boolean = !isNice(str)
 
   def determineNiceStringsForFile(f: String => Boolean): Int =
-    Using.resource(Source.fromResource("2015/day5input.txt")):
+    Using.resource(Source.fromResource("2015/day05input.txt")):
       _.getLines().map(line => f(line)).count(_.==(true))
 
   def isNicePartTwo(str: String): Boolean =
@@ -38,4 +38,4 @@ object Day5:
       even.sliding(2).toSeq.exists(s => s.head == s.last))
 
   def isNaughtyPartTwo(str: String): Boolean = !isNicePartTwo(str)
-end Day5
+end Day05
