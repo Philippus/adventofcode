@@ -7,9 +7,9 @@ object Day10:
     @tailrec
     def helper(sequence: String, current: String, acc: String): String =
       sequence match
-        case s if s.isEmpty => acc ++ s"${current.length.toString}${current.head.toString}"
+        case s if s.isEmpty                                              => acc ++ s"${current.length.toString}${current.head.toString}"
         case s if current.isEmpty || current.lastOption.contains(s.head) => helper(sequence.tail, current + s.head, acc)
-        case s => helper(sequence.tail, s.head.toString, acc ++ s"${current.length.toString}${current.head.toString}")
+        case s                                                           => helper(sequence.tail, s.head.toString, acc ++ s"${current.length.toString}${current.head.toString}")
 
     helper(sequence, "", "")
 
