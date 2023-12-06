@@ -2,7 +2,7 @@ package adventofcode2015
 
 import scala.annotation.tailrec
 import scala.io.Source
-import scala.util.{Try, Using}
+import scala.util.Using
 
 object Day07:
   case class Wire(id: String, signal: Int)
