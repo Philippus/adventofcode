@@ -3,18 +3,19 @@ package adventofcode2023
 import scala.collection.immutable.Seq
 
 import adventofcode2023.Day07.*
-import adventofcode2023.Day07.HandType._
+import adventofcode2023.Day07.HandType.*
+
 import munit.FunSuite
 
 class Day07Suite extends FunSuite:
   test("determines hand type"):
-    assertEquals(determineType("AAAAA"), FiveOfAKind)
-    assertEquals(determineType("AA8AA"), FourOfAKind)
-    assertEquals(determineType("23332"), FullHouse)
-    assertEquals(determineType("TTT98"), ThreeOfAKind)
-    assertEquals(determineType("23432"), TwoPair)
-    assertEquals(determineType("A23A4"), OnePair)
-    assertEquals(determineType("23456"), HighCard)
+    assertEquals(determineType(Hand.fromString("AAAAA")), FiveOfAKind)
+    assertEquals(determineType(Hand.fromString("AA8AA")), FourOfAKind)
+    assertEquals(determineType(Hand.fromString("23332")), FullHouse)
+    assertEquals(determineType(Hand.fromString("TTT98")), ThreeOfAKind)
+    assertEquals(determineType(Hand.fromString("23432")), TwoPair)
+    assertEquals(determineType(Hand.fromString("A23A4")), OnePair)
+    assertEquals(determineType(Hand.fromString("23456")), HighCard)
 
   test("can compare hands"):
     assert(Hand.fromString("AAAAA") > Hand.fromString("AA8AA"))
@@ -41,30 +42,30 @@ class Day07Suite extends FunSuite:
   test("can sort hands with joker rule"):
     assertEquals(
       Seq(
-        JokerHand.fromString("32T3K"),
-        JokerHand.fromString("T55J5"),
-        JokerHand.fromString("KK677"),
-        JokerHand.fromString("KTJJT"),
-        JokerHand.fromString("QQQJA")
+        Hand.fromString("32T3K", true),
+        Hand.fromString("T55J5", true),
+        Hand.fromString("KK677", true),
+        Hand.fromString("KTJJT", true),
+        Hand.fromString("QQQJA", true)
       ).sorted.map(_.toString),
       List("32T3K", "KK677", "T55J5", "QQQJA", "KTJJT")
     )
 
   test("determines hand type part two"):
-    assertEquals(determineJokerType("JJJJJ"), FiveOfAKind)
-    assertEquals(determineJokerType("JKKK2"), FourOfAKind)
-    assertEquals(determineJokerType("QQQQ2"), FourOfAKind)
+    assertEquals(determineJokerType(Hand.fromString("JJJJJ")), FiveOfAKind)
+    assertEquals(determineJokerType(Hand.fromString("JKKK2")), FourOfAKind)
+    assertEquals(determineJokerType(Hand.fromString("QQQQ2")), FourOfAKind)
 
   test("can compare hands part two"):
-    assert(JokerHand.fromString("JKKK2") < JokerHand.fromString("QQQQ2"))
+    assert(Hand.fromString("JKKK2", true) < Hand.fromString("QQQQ2", true))
 
   test("gets expected winnings in part two"):
     val handsAndBids = Seq(
-      (JokerHand.fromString("32T3K"), 765),
-      (JokerHand.fromString("T55J5"), 684),
-      (JokerHand.fromString("KK677"), 28),
-      (JokerHand.fromString("KTJJT"), 220),
-      (JokerHand.fromString("QQQJA"), 483)
+      (Hand.fromString("32T3K", true), 765),
+      (Hand.fromString("T55J5", true), 684),
+      (Hand.fromString("KK677", true), 28),
+      (Hand.fromString("KTJJT", true), 220),
+      (Hand.fromString("QQQJA", true), 483)
     )
     val withIndex    = handsAndBids.sortBy(_._1).zipWithIndex
     val winnings     = withIndex.map(e => e._1._2 * (e._2 + 1)).sum

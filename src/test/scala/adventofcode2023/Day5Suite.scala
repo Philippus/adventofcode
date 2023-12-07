@@ -36,8 +36,8 @@ class Day5Suite extends FunSuite:
         val lightToTemperatureMap      = generateMap(lightToTemperature.tail)
         val (_, temperatureToHumidity) = lines.splitAt(lines.indexOf("temperature-to-humidity map:"))
         val temperatureToHumidityMap   = generateMap(temperatureToHumidity.tail)
-        val (_, humidityToLocation)   = lines.splitAt(lines.indexOf("humidity-to-location map:"))
-        val humidityToLocationMap     = generateMap(humidityToLocation.tail)
+        val (_, humidityToLocation)    = lines.splitAt(lines.indexOf("humidity-to-location map:"))
+        val humidityToLocationMap      = generateMap(humidityToLocation.tail)
         seeds.map(seed =>
           seedToLocation(
             Seq(
@@ -72,8 +72,8 @@ class Day5Suite extends FunSuite:
         val lightToTemperatureMap      = generateMap(lightToTemperature.tail)
         val (_, temperatureToHumidity) = lines.splitAt(lines.indexOf("temperature-to-humidity map:"))
         val temperatureToHumidityMap   = generateMap(temperatureToHumidity.tail)
-        val (_, humidityToLocation)   = lines.splitAt(lines.indexOf("humidity-to-location map:"))
-        val humidityToLocationMap     = generateMap(humidityToLocation.tail)
+        val (_, humidityToLocation)    = lines.splitAt(lines.indexOf("humidity-to-location map:"))
+        val humidityToLocationMap      = generateMap(humidityToLocation.tail)
 
         var min = Long.MaxValue
         seeds.toSeq.grouped(2).toSeq.foreach { group =>
