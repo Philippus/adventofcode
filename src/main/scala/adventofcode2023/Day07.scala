@@ -100,7 +100,7 @@ object Day07:
       HandType.FiveOfAKind
     else
       val cardsWithoutJoker = hand.cards.filterNot(_.==(Card.`J`))
-      val cardToReplace = cardsWithoutJoker.groupBy(identity).view.mapValues(_.length).maxBy(_._2)._1
+      val cardToReplace     = cardsWithoutJoker.groupBy(identity).view.mapValues(_.length).maxBy(_._2)._1
       determineType(Hand(cardsWithoutJoker ++ Seq.fill(5 - cardsWithoutJoker.length)(cardToReplace)))
 
   def readLine(line: String, jokerRule: Boolean): (Hand, Int) =

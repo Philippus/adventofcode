@@ -16,9 +16,9 @@ object Day13:
     @tailrec
     def helper(seatingArrangement: List[String], acc: Int): Int =
       seatingArrangement match
-        case Nil =>
+        case Nil            =>
           acc
-        case b :: Nil =>
+        case b :: Nil       =>
           acc
         case a :: b :: rest =>
           val add = values.find(value => value._1 == a && value._3 == b).map(_._2).get +
@@ -31,13 +31,14 @@ object Day13:
 
   def maximumHappinessForInputFile(extraAttendee: Option[String]): Int =
     Using.resource(Source.fromResource("2015/day13input.txt")): source =>
-      val initialValues = source.getLines().map(handleLine).toSeq
-      val attendees = initialValues.map(_._1).toSet
-      val completeValues = extraAttendee match
+      val initialValues       = source.getLines().map(handleLine).toSeq
+      val attendees           = initialValues.map(_._1).toSet
+      val completeValues      = extraAttendee match
         case Some(value) => initialValues ++ addAttendee(attendees, value)
-        case None => initialValues
+        case None        => initialValues
       val seatingArrangements = (extraAttendee match
         case Some(value) => (attendees + value)
-        case None => (attendees)).toList.permutations
+        case None        => (attendees)
+      ).toList.permutations
       seatingArrangements.map(seatingArrangement => calculateHappiness(seatingArrangement, completeValues)).max
 end Day13

@@ -33,15 +33,15 @@ object Day08:
 
   def readDocument: BigInt =
     Using.resource(Source.fromResource("2023/day08input.txt")): source =>
-      val lines = source.getLines.toSeq
+      val lines        = source.getLines.toSeq
       val instructions = lines.head
-      val nodes = lines.drop(2).map(readLine).toSet
+      val nodes        = lines.drop(2).map(readLine).toSet
       calculateSteps(instructions, Seq("AAA"), nodes, "ZZZ")
 
   def readDocumentForGhosts: BigInt =
     Using.resource(Source.fromResource("2023/day08input.txt")): source =>
-      val lines = source.getLines.toSeq
+      val lines        = source.getLines.toSeq
       val instructions = lines.head
-      val nodes = lines.drop(2).map(readLine).toSet
+      val nodes        = lines.drop(2).map(readLine).toSet
       calculateSteps(instructions, nodes.map(_.source).filter(_.endsWith("A")).toSeq, nodes, "Z")
 end Day08
