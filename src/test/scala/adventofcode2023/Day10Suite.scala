@@ -16,7 +16,7 @@ class Day10Suite extends FunSuite:
       ".L-J.".toCharArray.map(c => (c, -1)),
       ".....".toCharArray.map(c => (c, -1))
     )
-    assertEquals(findStartPos(grid), Pos(1,1))
+    assertEquals(findStartPos(grid), Pos(1, 1))
 
   test("finds next pos"):
     val grid = Array(

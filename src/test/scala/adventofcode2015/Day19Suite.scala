@@ -10,7 +10,7 @@ class Day19Suite extends FunSuite:
       "H" -> "OH",
       "O" -> "HH"
     )
-    val result = replacements.flatMap(x => replace("HOH", x)).distinct
+    val result       = replacements.flatMap(x => replace("HOH", x)).distinct
     assertEquals(result.length, 4)
 
   test("counts steps to molecule"):
@@ -21,8 +21,8 @@ class Day19Suite extends FunSuite:
       "H" -> "OH",
       "O" -> "HH"
     )
-      assertEquals(stepsToMedicine("HOH", replacements), 3)
-      assertEquals(stepsToMedicine("HOHOHO", replacements), 6)
+    assertEquals(stepsToMedicine("HOH", replacements), 3)
+    assertEquals(stepsToMedicine("HOHOHO", replacements), 6)
 
   test("counts distinct molecules for the input file"):
     assertEquals(countDistinctMoleculesForFile(), 518)

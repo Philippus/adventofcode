@@ -34,7 +34,7 @@ object Day10:
       y <- grid.indices
     yield grid(y)(x)._2).max
 
-  def findMaxInBigGrid(): Int                            =
+  def findMaxInBigGrid(): Int =
     importLines()
     val startPos   = findStartPos(grid)
     grid(startPos.y)(startPos.x) = ('7', 0)
@@ -47,6 +47,7 @@ object Day10:
           currentPos = value
         case None        => done = true
     (findMax(grid) + 1) / 2
+
   def initializeGrid(lineWithIndex: (String, Int)): Unit =
     for
       x <- 0.until(lineWithIndex._1.length)

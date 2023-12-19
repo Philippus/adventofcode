@@ -77,7 +77,7 @@ object Day11:
     val expandedUniverse   = calculateDistance(
       generateCombinations(findGalaxies(transposeMatrix(expandUniverse(transposeMatrix(expandUniverse(grid))))))
     )
-    // the diff is how much is added for every expansion, so the total becomes: 
+    // the diff is how much is added for every expansion, so the total becomes:
     BigInt(unexpandedUniverse) + (BigInt(expandedUniverse - unexpandedUniverse) * BigInt(999999))
 
   def importLines(): Unit =
