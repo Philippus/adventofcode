@@ -66,7 +66,8 @@ object Day25:
         (l.component1 == c1 && l.component2 == c2) || (l.component1 == c2 && l.component2 == c1)
       ).get
 
-    val topNVisitedConnections = visitedConnections.toSeq.groupBy(identity).toSeq.sortBy(-_._2.size).take(topN).map(_._1)
+    val topNVisitedConnections =
+      visitedConnections.toSeq.groupBy(identity).toSeq.sortBy(-_._2.size).take(topN).map(_._1)
 
     val sizeOfFirstGroup = topNVisitedConnections.combinations(3).map: combo =>
       findGroupOfComponents(combo.head.component1, connections.diff(combo).toSet).size
