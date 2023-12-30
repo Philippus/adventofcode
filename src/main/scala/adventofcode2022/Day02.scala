@@ -27,7 +27,7 @@ object Day02:
       case "C X" => 2 + 0
       case "C Y" => 3 + 3
       case "C Z" => 1 + 6
-  def calculateSumForImportFile(): Int =
+  def calculateSumForImportFile(): Int  =
     importLines().map(handleLine).sum
 
   def calculateSumForImportFilePartTwo(): Int =
