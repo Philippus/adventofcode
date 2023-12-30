@@ -7,7 +7,6 @@ import scala.util.Using
 object Day23:
   @tailrec
   def readInstructions(instructions: Seq[String], nextInstruction: Int, a: Int, b: Int): Int =
-    println(s"$a, $b, $nextInstruction")
     if nextInstruction >= instructions.length then
       b
     else
