@@ -4,16 +4,11 @@ import adventofcode2015.Day24.*
 import munit.FunSuite
 
 class Day24Suite extends FunSuite:
-//  test("determines quantum entanglement of the first group of packages in the ideal configuration"):
-//    val packages = Seq(1, 2, 3, 4, 5, 7, 8, 9, 10, 11)
-//    assertEquals(determineGroups(packages), 99)
-//    assertEquals(determineGroups(importLines()), 0)
+  val packages: Seq[BigInt] = importLines()
 
-  test("test"):
-    val packages = importLines()
-    assertEquals(determineMinimumCombinations(packages), BigInt(2))
+  test("finds quantum entanglement of the first group of packages in the ideal configuration"):
+    assertEquals(determineMinimumCombinations(packages), BigInt(10439961859L))
 
-//  test("weight of group"):
-//    val packages = importLines()
-//    assertEquals(determineWeightOfGroup(packages), BigInt(3))
+  test("finds quantum entanglement of the first group of packages in the ideal configuration with the trunk"):
+    assertEquals(determineMinimumCombinationsForPartTwo(packages), BigInt(72050269L))
 end Day24Suite
