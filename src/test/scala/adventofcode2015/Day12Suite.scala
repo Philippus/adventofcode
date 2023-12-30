@@ -2,8 +2,13 @@ package adventofcode2015
 
 import adventofcode2015.Day12.*
 import munit.FunSuite
+import spray.json._
 
 class Day12Suite extends FunSuite:
-  test("sums the numbers for json file"):
-    assertEquals(sumNumbersInJsonFile, 156366)
+  val json: JsValue = readInputFile().parseJson
+  test("works for the input file"):
+    assertEquals(sumNumbers(json), 156366)
+
+  test("works for the input file part two"):
+    assertEquals(sumNumbers(json, true), 96852)
 end Day12Suite
