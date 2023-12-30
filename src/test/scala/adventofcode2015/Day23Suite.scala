@@ -19,5 +19,5 @@ class Day23Suite extends FunSuite:
 
   test("reads instructions from file part two"):
     val instructions = readInstrucionsFromFile()
-    assertEquals(readInstructions(instructions, 0, 1, 0), 1)
+    assertEquals(readInstructions(instructions, 0, 1, 0), 160)
 end Day23Suite
