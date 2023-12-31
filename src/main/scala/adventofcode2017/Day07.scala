@@ -11,9 +11,7 @@ object Day07:
     val program = programs.find(_.name == name).get
     program.programsAbove match
       case Seq() => program.weight
-      case _     =>
-        val weightsOfProgramsAbove = program.programsAbove.map(name => weightOfProgram(name, programs))
-        program.programsAbove.map(name => weightOfProgram(name, programs)).sum + program.weight
+      case _     => program.programsAbove.map(name => weightOfProgram(name, programs)).sum + program.weight
 
   def determineBottomProgram(programs: Seq[Program]): Option[Program] =
     val programsAbove = programs.flatMap(_.programsAbove)
