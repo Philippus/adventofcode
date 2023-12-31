@@ -10,8 +10,8 @@ object Day07:
   def weightOfProgram(name: String, programs: Seq[Program]): Int =
     val program = programs.find(_.name == name).get
     program.programsAbove match
-      case Seq() => program.weight
-      case _     => program.programsAbove.map(name => weightOfProgram(name, programs)).sum + program.weight
+      case Seq()         => program.weight
+      case programsAbove => programsAbove.map(name => weightOfProgram(name, programs)).sum + program.weight
 
   def determineBottomProgram(programs: Seq[Program]): Option[Program] =
     val programsAbove = programs.flatMap(_.programsAbove)
@@ -21,11 +21,9 @@ object Day07:
   def findExpectedWeightOfUnbalancedProgram(name: String, programs: Seq[Program], expectedWeight: Int): Int =
     val program = programs.find(_.name == name).get
     program.programsAbove match
-      case Seq() => expectedWeight
-      case _     =>
-        val programsAbove            = program.programsAbove
-        val programsAboveWithWeights =
-          program.programsAbove.map(name => weightOfProgram(name, programs)).zip(programsAbove)
+      case Seq()         => expectedWeight
+      case programsAbove =>
+        val programsAboveWithWeights = programsAbove.map(name => weightOfProgram(name, programs)).zip(programsAbove)
         val groupsWithSizes          = programsAboveWithWeights.groupBy(_._1).map(group => (group, group._2.length))
         val newExpectedWeight        = groupsWithSizes.toSeq.minBy(-_._2)._1._1
         if groupsWithSizes.size > 1 then

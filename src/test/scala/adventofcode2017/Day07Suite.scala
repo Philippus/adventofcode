@@ -8,7 +8,7 @@ class Day07Suite extends FunSuite:
     val programs = readInputFile()
     assertEquals(determineBottomProgram(programs).map(_.name), Some("dgoocsw"))
 
-  test("determines weight of unbalanced program"):
+  test("determines expected weight of unbalanced program"):
     val programs       = readInputFile()
     val bottomProgram  = determineBottomProgram(programs).get
     val expectedWeight = {
