@@ -37,7 +37,7 @@ object Day23:
         case s"jio b, $offset" =>
           if b == 1 then readInstructions(instructions, nextInstruction + offset.toInt, a, b)
           else readInstructions(instructions, nextInstruction + 1, a, b)
-  def readInstrucionsFromFile(): Seq[String]                                                 =
+  def readInstructionsFromFile(): Seq[String]                                                 =
     Using.resource(Source.fromResource("2015/day23input.txt")): source =>
       source.getLines().toSeq
 end Day23
