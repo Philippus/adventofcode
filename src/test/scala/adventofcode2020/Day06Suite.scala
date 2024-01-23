@@ -16,7 +16,7 @@ class Day06Suite extends FunSuite:
     val answers = "abc\n\na\nb\nc\n\nab\nac\n\na\na\na\na\n\nb"
     assertEquals(countQuestionsEveryoneAnswered(answers), 6)
 
-  test("counts the number of questions everyone answered in inpu"):
+  test("counts the number of questions everyone answered in input"):
     val answers = readInputFile()
     assertEquals(countQuestionsEveryoneAnswered(answers), 3392)
 end Day06Suite

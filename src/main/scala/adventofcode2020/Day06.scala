@@ -8,13 +8,13 @@ object Day06:
     answers.split("\n\n").map(_.split("\n").mkString.distinct.length).sum
 
   def countQuestionsEveryoneAnswered(answers: String) =
-    val x = answers.split("\n\n").map(_.split("\n").toSeq).toSeq
-    val z =
+    val answersPerGroup = answers.split("\n\n").map(_.split("\n").toSeq).toSeq
+    val answeredByAll =
       for
-        xx <- x
-        y   = xx.mkString.groupBy(identity).filter(_._2.length == xx.length)
-      yield y
-    z.filter(_.nonEmpty).map(_.keys).map(_.size).sum
+        answersOfGroup <- answersPerGroup
+        answeredByAllGrouped   = answersOfGroup.mkString.groupBy(identity).filter(_._2.length == answersOfGroup.length)
+      yield answeredByAllGrouped.keys
+    answeredByAll.map(_.size).sum
 
   def readInputFile(): String =
     Using.resource(Source.fromResource("2020/day06input.txt")): source =>
