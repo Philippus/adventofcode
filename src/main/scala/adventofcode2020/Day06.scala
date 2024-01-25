@@ -9,10 +9,10 @@ object Day06:
 
   def countQuestionsEveryoneAnswered(answers: String) =
     val answersPerGroup = answers.split("\n\n").map(_.split("\n").toSeq).toSeq
-    val answeredByAll =
+    val answeredByAll   =
       for
-        answersOfGroup <- answersPerGroup
-        answeredByAllGrouped   = answersOfGroup.mkString.groupBy(identity).filter(_._2.length == answersOfGroup.length)
+        answersOfGroup      <- answersPerGroup
+        answeredByAllGrouped = answersOfGroup.mkString.groupBy(identity).filter(_._2.length == answersOfGroup.length)
       yield answeredByAllGrouped.keys
     answeredByAll.map(_.size).sum
 
