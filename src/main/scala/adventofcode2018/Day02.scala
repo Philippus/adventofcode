@@ -14,19 +14,19 @@ object Day02:
   def checksum(boxIds: Seq[String]): Int =
     boxIds.map(exactlyTwo).count(_.==(true)) * boxIds.map(exactlyThree).count(_.==(true))
 
-  def commonBetweenStrings(s1: String, s2: String): String =
+  def commonBetweenStrings(s1: String, s2: String): Option[String] =
     @tailrec
-    def loop(s1: String, s2: String, pos: Int): String =
+    def loop(s1: String, s2: String, pos: Int): Option[String] =
       if pos >= s1.length then
-        ""
+        None
       else if s1.updated(pos, '_') == s2.updated(pos, '_') then
-        s1.updated(pos, '_').replace("_", "")
+        Some(s1.updated(pos, '_').replace("_", ""))
       else
         loop(s1, s2, pos + 1)
     loop(s1, s2, 0)
 
   def commonBetweenBoxIds(boxIds: Seq[String]): String =
-    boxIds.combinations(2).collect(combo => commonBetweenStrings(combo.head, combo.last)).filter(_.nonEmpty).toSeq.head
+    boxIds.combinations(2).flatMap(combo => commonBetweenStrings(combo.head, combo.last)).mkString
 
   def readInputFile(): Seq[String] =
     Using.resource(Source.fromResource("2018/day02input.txt")):

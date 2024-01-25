@@ -40,5 +40,5 @@ class Day02Suite extends FunSuite:
 
   test("common letters between box ids for input"):
     val boxIds = readInputFile()
-    assertEquals(commonBetweenBoxIds(boxIds), "fgij")
+    assertEquals(commonBetweenBoxIds(boxIds), "krdmtuqjgwfoevnaboxglzjph")
 end Day02Suite
