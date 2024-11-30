@@ -27,7 +27,7 @@ object Day2:
     var minBlue             = 0
     val Array(_, allRounds) =
       line.split(":").map(_.trim) // Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
-    val rounds              = allRounds.split(";").map(_.trim)
+    val rounds = allRounds.split(";").map(_.trim)
     rounds.map: round => // 1 red, 2 green, 6 blue
       val colors = round.split(",").map(_.trim)
       colors.map: color =>

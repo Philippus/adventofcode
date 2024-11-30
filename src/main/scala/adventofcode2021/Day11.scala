@@ -29,7 +29,8 @@ object Day11:
         )
       ).filterNot(tens.contains(_))
       toUpdate.foreach(update =>
-        if update._2 >= 0 && update._2 <= energyLevels.length - 1 && update._1 >= 0 && update._1 <= energyLevels.head.length - 1
+        if update._2 >= 0 && update._2 <= energyLevels.length - 1 && update._1 >= 0 && update._1 <= energyLevels.head
+            .length - 1
         then
           energyLevels(update._2)(update._1) += 1
       )

@@ -24,7 +24,8 @@ object Day18:
       yield (x, y)
     coords.foreach: (x, y) =>
       val n = neighbours(currentState, x, y)
-      if (x == 0 && y == 0) || (x == currentState.length - 1 && y == 0) || (x == 0 && y == currentState.length - 1) || (x == currentState.length - 1 && y == currentState.length - 1)
+      if (x == 0 && y == 0) || (x == currentState.length - 1 && y == 0) || (x == 0 && y == currentState
+          .length - 1) || (x == currentState.length - 1 && y == currentState.length - 1)
       then workingState(x)(y) = true
       else if currentState(x)(y) && (n == 2 || n == 3) then workingState(x)(y) = true
       else if !currentState(x)(y) && n == 3 then workingState(x)(y) = true

@@ -39,5 +39,5 @@ class Day18Suite extends FunSuite:
     val state =
       nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(grid))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
 
-    assertEquals(state.flatten.count(x => x), 1)
+      assertEquals(state.flatten.count(x => x), 1)
 end Day18Suite
