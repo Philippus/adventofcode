@@ -11,12 +11,12 @@ developers := List(
   )
 )
 
-scalaVersion := "3.4.0"
+scalaVersion := "3.5.2"
 
 mainClass.withRank(KeyRanks.Invisible)   := Some("adventofcode2023.day1.Day1")
 
 libraryDependencies ++= Seq(
-  "org.scalameta" %% "munit" % "0.7.29" % Test,
-  "org.scalameta" %% "munit-scalacheck" % "0.7.29" % Test,
+  "org.scalameta" %% "munit" % "1.0.2" % Test,
+  "org.scalameta" %% "munit-scalacheck" % "1.0.0" % Test,
   "io.spray" %%  "spray-json" % "1.3.6"
 )
