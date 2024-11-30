@@ -13,7 +13,7 @@ developers := List(
 
 scalaVersion := "3.5.2"
 
-mainClass.withRank(KeyRanks.Invisible)   := Some("adventofcode2023.day1.Day1")
+mainClass.withRank(KeyRanks.Invisible)   := Some("adventofcode2024.day1.Day1")
 
 libraryDependencies ++= Seq(
   "org.scalameta" %% "munit" % "1.0.2" % Test,
