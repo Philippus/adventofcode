@@ -7,7 +7,7 @@ object Day01:
   private def createListsFromInput(lines: Seq[String]): (Seq[Int], Seq[Int]) =
     val seqTuples: Seq[(Int, Int)] = lines.map:
       case s"$a   $b" => (a.toInt, b.toInt)
-    (seqTuples.map(_._1), seqTuples.map(_._2))
+    seqTuples.unzip
 
   def distanceBetweenLists(lines: Seq[String]): Int =
     val (left, right) = createListsFromInput(lines)
