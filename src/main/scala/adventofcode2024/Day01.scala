@@ -5,11 +5,8 @@ import scala.util.Using
 
 object Day01:
   private def createListsFromInput(lines: Seq[String]): (Seq[Int], Seq[Int]) =
-    val seqTuples: Seq[(Int, Int)] = lines.map(_.split("\\s+")).map {
-      case Array(a, b) =>
-        (a.toInt, b.toInt)
-      case _           => (0, 0)
-    }
+    val seqTuples: Seq[(Int, Int)] = lines.map:
+      case s"$a   $b" => (a.toInt, b.toInt)
     (seqTuples.map(_._1), seqTuples.map(_._2))
 
   def distanceBetweenLists(lines: Seq[String]): Int =
