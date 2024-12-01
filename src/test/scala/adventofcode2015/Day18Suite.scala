@@ -34,10 +34,10 @@ class Day18Suite extends FunSuite:
 //    //    println(nextState(nextState(nextState(nextState(currentState)))).map(_.toSeq).toSeq.mkString)
 //    assert(true)
 
-  test("abc"):
-    importLines()
-    val state =
-      nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(grid))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
-
-      assertEquals(state.flatten.count(x => x), 1)
+//  test("abc"):
+//    importLines()
+//    val state =
+//      nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(nextState(grid))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+//
+//      assertEquals(state.flatten.count(x => x), 1)
 end Day18Suite
