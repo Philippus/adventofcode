@@ -56,7 +56,7 @@ object Day09:
     yield heightMap(y)(x)).map(lp => lp + 1).sum
 
   def handleLines(s: Seq[String]): Vector[Vector[Int]] =
-    Vector(s.map(_.map(_.asDigit).toVector): _*)
+    Vector(s.map(_.map(_.asDigit).toVector)*)
 
   def importLines(): Seq[String] =
     Using.resource(Source.fromResource("2021/day09input.txt")): source =>

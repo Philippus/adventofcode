@@ -62,7 +62,7 @@ object Day11:
     loop(energyLevels.toArray.map(_.toArray), initialSteps, 0)
 
   def handleLines(s: Seq[String]): Vector[Vector[Int]] =
-    Vector(s.map(_.map(_.asDigit).toVector): _*)
+    Vector(s.map(_.map(_.asDigit).toVector)*)
 
   def importLines(): Seq[String] =
     Using.resource(Source.fromResource("2021/day11input.txt")): source =>

@@ -20,7 +20,7 @@ object Day03:
     slopes.map((r, d) => countTrees(r, d, map).toLong).product
 
   def handleLines(s: Seq[String]): Vector[Vector[Char]] =
-    Vector(s.map(Vector(_: _*)): _*)
+    Vector(s.map(Vector(_*))*)
 
   def readInputFile(): Seq[String] =
     Using.resource(Source.fromResource("2020/day03input.txt")):
