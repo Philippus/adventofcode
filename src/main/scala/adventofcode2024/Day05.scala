@@ -10,25 +10,25 @@ object Day05:
     if update.length <= 1 then
       true
     else
-      orderingRules.forall {
+      orderingRules.forall:
         case s"$a|$b" if b == update.head && update.tail.contains(a) => false
         case _                                                       => true
-      } && isCorrectlyOrdered(update.tail, orderingRules)
+      && isCorrectlyOrdered(update.tail, orderingRules)
 
   def correctlyOrder(wrongUpdate: Seq[String], orderingRules: Seq[String]): Seq[String] =
-    wrongUpdate.sortWith((a, b) => {
-      orderingRules.map {
+    wrongUpdate.sortWith((a, b) =>
+      orderingRules.map:
         case s"$x|$y" if x == a && y == b => true
         case s"$x|$y" if x == b && y == a => false
         case _                            => false
-      }.find(identity).getOrElse(false)
-    })
+      .find(identity).getOrElse(false)
+    )
 
   def addUpMiddlePageNumbers(updates: Seq[String]): Int =
-    updates.filter(_.nonEmpty).map { valid =>
+    updates.filter(_.nonEmpty).map: valid =>
       val split = valid.split(",")
       split.slice(split.length / 2, split.length / 2 + 1).head
-    }.map(_.toInt).sum
+    .map(_.toInt).sum
 
   def separateSections(lines: Seq[String]): (Seq[String], Seq[String]) =
     (lines.takeWhile(_.nonEmpty), lines.dropWhile(_.nonEmpty).filter(_.nonEmpty))
