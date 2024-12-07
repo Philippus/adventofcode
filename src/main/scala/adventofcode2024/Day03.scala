@@ -9,23 +9,29 @@ object Day03:
   def addUpMultiplications(input: String, acc: Long): Long =
     input match {
       case "" => acc
-      case s"mul(${a},${b})$rest" if a.forall(_.isDigit) && b.forall(_.isDigit) && a.length <= 3 && b.length <= 3 && a.length >= 0 && b.length >= 0 =>
+      case s"mul(${a},${b})$rest"
+          if a.forall(_.isDigit) && b.forall(_.isDigit) && a.length <= 3 && b.length <= 3 && a.length >= 0 && b
+            .length >= 0 =>
         addUpMultiplications(rest, (a.toLong * b.toLong) + acc)
-      case _ =>
+      case _  =>
         addUpMultiplications(input.tail, acc)
     }
 
   @tailrec
   def addUpEnabledMultiplications(line: String, acc: Long, enabled: Boolean): Long =
     line match {
-      case "" => acc
-      case s"do()$rest" => addUpEnabledMultiplications(rest, acc, true)
+      case ""              => acc
+      case s"do()$rest"    => addUpEnabledMultiplications(rest, acc, true)
       case s"don't()$rest" => addUpEnabledMultiplications(rest, acc, false)
-      case s"mul(${a},${b})$rest" if a.forall(_.isDigit) && b.forall(_.isDigit) && a.length <= 3 && b.length <= 3 && a.length >= 0 && b.length >= 0 && enabled =>
+      case s"mul(${a},${b})$rest"
+          if a.forall(_.isDigit) && b.forall(_.isDigit) && a.length <= 3 && b.length <= 3 && a.length >= 0 && b
+            .length >= 0 && enabled =>
         addUpEnabledMultiplications(rest, (a.toLong * b.toLong) + acc, enabled)
-      case s"mul(${a},${b})$rest" if a.forall(_.isDigit) && b.forall(_.isDigit) && a.length <= 3 && b.length <= 3 && a.length >= 0 && b.length >= 0 =>
+      case s"mul(${a},${b})$rest"
+          if a.forall(_.isDigit) && b.forall(_.isDigit) && a.length <= 3 && b.length <= 3 && a.length >= 0 && b
+            .length >= 0 =>
         addUpEnabledMultiplications(rest, acc, enabled)
-      case _ =>
+      case _               =>
         addUpEnabledMultiplications(line.tail, acc, enabled)
     }
 
