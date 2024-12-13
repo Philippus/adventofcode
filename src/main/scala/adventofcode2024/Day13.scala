@@ -49,5 +49,5 @@ object Day13:
   def importLines(): List[List[String]] =
     Using.resource(Source.fromResource(s"2024/${this.getClass.getSimpleName.toLowerCase.replace("$", "")}input.txt")):
       source =>
-        source.getLines().toList.sliding(4, 4).toList
+        source.getLines().toList.sliding(3, 4).toList
 end Day13

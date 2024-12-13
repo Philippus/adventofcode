@@ -28,5 +28,5 @@ class Day13Suite extends FunSuite:
     Using.resource(
       Source.fromResource(s"2024/${this.getClass.getSimpleName.toLowerCase.replace("suite", "")}sampleinput.txt")
     ): source =>
-      source.getLines().toList.sliding(4, 4).toList
+      source.getLines().toList.sliding(3, 4).toList
 end Day13Suite
