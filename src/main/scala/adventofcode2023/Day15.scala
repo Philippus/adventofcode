@@ -12,8 +12,8 @@ object Day15:
       currentValue = currentValue % 256L
     currentValue
 
-  def sumOfHashes(hashes: String): Long =
-    hashes.split(',').toSeq.map(calculateHash).sum
+  def sumOfHashes(steps: String): Long =
+    steps.split(',').toSeq.map(calculateHash).sum
 
   def importLines(): String =
     Using.resource(Source.fromResource(s"2023/${this.getClass.getSimpleName.toLowerCase.replace("$", "")}input.txt")):
