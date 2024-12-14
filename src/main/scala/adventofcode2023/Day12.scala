@@ -17,11 +17,16 @@ object Day12:
         case other =>
           generateCandidates(conditionRecord.tail, acc :+ other)
 
-  def calculatesArrangements(records: Seq[String]): Int =
+  def calculatesArrangements(records: Seq[String]): Long =
     records.map:
       case s"$conditionRecord $continuousGroup" =>
         generateCandidates(conditionRecord).map(calculateContinuousGroups).count(group => group == continuousGroup)
     .sum
+
+  def unfold(record: String): String =
+    record match
+      case s"$conditionRecord $continuousGroup" =>
+        Seq.fill(5)(conditionRecord).mkString("?") ++ " " ++ Seq.fill(5)(continuousGroup).mkString(",")
 
   def importLines(): Seq[String] =
     Using.resource(Source.fromResource(s"2023/${this.getClass.getSimpleName.toLowerCase.replace("$", "")}input.txt")):
