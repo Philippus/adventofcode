@@ -13,6 +13,12 @@ object Day23:
       else
         val instruction = instructions(nextInstruction)
         instruction match
+          case s"mul $a $b $c"                                                 =>
+            loop(
+              instructions,
+              nextInstruction + 1,
+              registers + (a.head -> (registers.getOrElse(b.head, 1L) * registers.getOrElse(c.head, 1L)))
+            )
           case s"inc $x"                                                       =>
             loop(instructions, nextInstruction + 1, registers + (x.head -> (registers.getOrElse(x.head, 0L) + 1L)))
           case s"dec $x"                                                       =>
