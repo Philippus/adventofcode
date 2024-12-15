@@ -22,20 +22,15 @@ object Day20:
   def countValidIps(lines: Seq[String]): Long =
     val intervals: Seq[Interval[Long]] = lines.map: line =>
       line.split('-') match
-        case Array(lo, hi) => (Interval[Long](lo.toLong, hi.toLong).get)
+        case Array(lo, hi) => Interval[Long](lo.toLong, hi.toLong + 1L).get
     .sortBy(_.`-`)
     val mergeIntervals                 = intervals.foldLeft(Seq.empty[Interval[Long]]) {
-      case (Seq(), j) =>
-        Seq(j)
+      case (Seq(), j) => Seq(j)
       case (s, j)     => s.last.findRelation(j) match
-          case `<` if j.`-` - s.last.`+` > 1 =>
-            s :+ j
-          case `>` if s.last.`-` - j.`+` > 1 =>
-            s :+ j
-          case r                             =>
-            s.init :+ s.last.span(j)
+          case `<` | `>` => s :+ j
+          case r         => s.init :+ s.last.span(j)
     }
-    mergeIntervals.sliding(2).map(x => x.last.`-` - x.head.`+` - 1).sum
+    mergeIntervals.sliding(2).map(is => is.last.`-` - is.head.`+`).sum
 
   def importLines(): Seq[String] =
     Using.resource(Source.fromResource("2016/day20input.txt")): source =>
