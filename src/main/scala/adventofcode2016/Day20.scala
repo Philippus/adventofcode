@@ -24,13 +24,13 @@ object Day20:
       line.split('-') match
         case Array(lo, hi) => Interval[Long](lo.toLong, hi.toLong + 1L).get
     .sortBy(_.`-`)
-    val mergeIntervals                 = intervals.foldLeft(Seq.empty[Interval[Long]]) {
+    val mergedIntervals                 = intervals.foldLeft(Seq.empty[Interval[Long]]) {
       case (Seq(), j) => Seq(j)
       case (s, j)     => s.last.findRelation(j) match
           case `<` | `>` => s :+ j
           case r         => s.init :+ s.last.span(j)
     }
-    mergeIntervals.sliding(2).map(is => is.last.`-` - is.head.`+`).sum
+    mergedIntervals.sliding(2).map(is => is.last.`-` - is.head.`+`).sum
 
   def importLines(): Seq[String] =
     Using.resource(Source.fromResource("2016/day20input.txt")): source =>
