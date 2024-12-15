@@ -3,6 +3,8 @@ package adventofcode2016
 import scala.io.Source
 import scala.util.Using
 
+import nl.gn0s1s.between._
+
 object Day20:
   def lowestValueIp(lines: Seq[String]): Long =
     val intervals = lines.map: line =>
@@ -16,6 +18,24 @@ object Day20:
       else
         j += 1
     j
+
+  def countValidIps(lines: Seq[String]): Long =
+    val intervals: Seq[Interval[Long]] = lines.map: line =>
+      line.split('-') match
+        case Array(lo, hi) => (Interval[Long](lo.toLong, hi.toLong).get)
+    .sortBy(_.`-`)
+    val mergeIntervals                 = intervals.foldLeft(Seq.empty[Interval[Long]]) {
+      case (Seq(), j) =>
+        Seq(j)
+      case (s, j)     => s.last.findRelation(j) match
+          case `<` if j.`-` - s.last.`+` > 1 =>
+            s :+ j
+          case `>` if s.last.`-` - j.`+` > 1 =>
+            s :+ j
+          case r                             =>
+            s.init :+ s.last.span(j)
+    }
+    mergeIntervals.sliding(2).map(x => x.last.`-` - x.head.`+` - 1).sum
 
   def importLines(): Seq[String] =
     Using.resource(Source.fromResource("2016/day20input.txt")): source =>

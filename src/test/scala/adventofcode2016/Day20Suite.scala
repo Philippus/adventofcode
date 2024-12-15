@@ -9,4 +9,7 @@ class Day20Suite extends FunSuite:
 
   test("finds lowest value ip that is not blocked for the input"):
     assertEquals(lowestValueIp(importLines()), 4793564L)
+
+  test("counts ips that are not blocked for the input"):
+    assertEquals(countValidIps(importLines()), 146L)
 end Day20Suite
