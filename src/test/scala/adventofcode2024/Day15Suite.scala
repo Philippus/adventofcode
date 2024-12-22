@@ -38,6 +38,26 @@ class Day15Suite extends FunSuite:
     val (things, moves) = handleLines(importLines())
     assertEquals(sumAllBoxesGPSCoordinates(things, moves), 1456590)
 
+  test("draws the warehouse for the widened tiny sample"):
+    val str = drawWarehouse(handleLinesPartTwo(importTinySampleLinesPartTwo())._1, 16, 8)
+    println(str)
+
+  test("draws the warehouse for the widened sample"):
+    val (warehouse, moves) = handleLinesPartTwo(importSampleLines())
+    println(drawWarehouse(walkRobotPartTwo(warehouse, moves ++ "^^^"), 20, 10))
+
+  test("calculates sum of all boxes' GPS coordinates for the widened input"):
+    val (things, moves) = handleLinesPartTwo(importLines())
+    assertEquals(sumAllBoxesGPSCoordinatesPartTwo(things, moves), 1489116)
+
+  def importTinySampleLinesPartTwo(): List[String] =
+    Using.resource(
+      Source.fromResource(
+        s"2024/${this.getClass.getSimpleName.toLowerCase.replace("suite", "")}tinysampleinputpart2.txt"
+      )
+    ): source =>
+      source.getLines().toList
+
   def importTinySampleLines(): List[String] =
     Using.resource(
       Source.fromResource(s"2024/${this.getClass.getSimpleName.toLowerCase.replace("suite", "")}tinysampleinput.txt")
