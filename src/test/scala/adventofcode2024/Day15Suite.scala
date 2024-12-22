@@ -39,7 +39,7 @@ class Day15Suite extends FunSuite:
     assertEquals(sumAllBoxesGPSCoordinates(things, moves), 1456590)
 
   test("draws the warehouse for the widened tiny sample"):
-    val str = drawWarehouse(handleLinesPartTwo(importTinySampleLinesPartTwo())._1, 16, 8)
+    val str = drawWarehouse(handleLinesPartTwo(importTinySampleLinesPartTwo())._1, 14, 7)
     println(str)
 
   test("draws the warehouse for the widened sample"):
