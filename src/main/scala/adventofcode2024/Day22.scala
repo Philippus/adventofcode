@@ -39,9 +39,9 @@ object Day22:
   def mostBananas(secretNumbers: Seq[BigInt]): Int =
     val priceChangesToBananass = secretNumbers.map(priceChangesToBananas)
     val possiblePriceChanges   = priceChangesToBananass.flatMap(_.keys).distinct
-    possiblePriceChanges.map: ps =>
+    possiblePriceChanges.map: priceChange =>
       priceChangesToBananass.map:
-        _.getOrElse(ps, 0)
+        _.getOrElse(priceChange, 0)
       .sum
     .max
 
