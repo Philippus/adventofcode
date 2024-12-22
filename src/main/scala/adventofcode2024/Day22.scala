@@ -30,9 +30,9 @@ object Day22:
         acc
       else
         val nextNumber = calculateNextNumber(secretNumber)
-        loop(nextNumber, i + 1, acc :+ nextNumber.toString.takeRight(1).toInt)
+        loop(nextNumber, i + 1, acc :+ (nextNumber % 10).toInt)
 
-    val ends = loop(secretNumber, 0, Seq(secretNumber.toString.takeRight(1).toInt))
+    val ends = loop(secretNumber, 0, Seq((secretNumber % 10).toInt))
     ends.sliding(5).foldRight(Map.empty[(Int, Int, Int, Int), Int]):
       case (s, m) => m + ((s(1) - s.head, s(2) - s(1), s(3) - s(2), s(4) - s(3)) -> s(4))
 
