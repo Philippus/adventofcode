@@ -26,13 +26,12 @@ object Day22:
   def priceChangesToBananas(secretNumber: BigInt): Map[(Int, Int, Int, Int), Int] =
     @tailrec
     def loop(secretNumber: BigInt, i: Int, acc: Seq[Int]): Seq[Int] =
-      if i == 1999 then
+      if i == 2000 then
         acc
       else
-        val nextNumber = calculateNextNumber(secretNumber)
-        loop(nextNumber, i + 1, acc :+ (nextNumber % 10).toInt)
+        loop(calculateNextNumber(secretNumber), i + 1, acc :+ (secretNumber % 10).toInt)
 
-    val ends = loop(secretNumber, 0, Seq((secretNumber % 10).toInt))
+    val ends = loop(secretNumber, 0, Seq.empty)
     ends.sliding(5).foldRight(Map.empty[(Int, Int, Int, Int), Int]):
       case (s, m) => m + ((s(1) - s.head, s(2) - s(1), s(3) - s(2), s(4) - s(3)) -> s(4))
 
