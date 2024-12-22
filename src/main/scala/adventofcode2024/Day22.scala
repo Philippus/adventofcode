@@ -33,9 +33,8 @@ object Day22:
         loop(nextNumber, i + 1, acc :+ nextNumber.toString.takeRight(1).toInt)
 
     val ends = loop(secretNumber, 0, Seq(secretNumber.toString.takeRight(1).toInt))
-    ends.sliding(5).map: s =>
-      ((s(1) - s.head, s(2) - s(1), s(3) - s(2), s(4) - s(3)), s(4))
-    .distinctBy(_._1).toMap
+    ends.sliding(5).foldRight(Map.empty[(Int, Int, Int, Int), Int]):
+      case (s, m) => m + ((s(1) - s.head, s(2) - s(1), s(3) - s(2), s(4) - s(3)) -> s(4))
 
   def mostBananas(secretNumbers: Seq[BigInt]): Int =
     val priceChangesToBananass = secretNumbers.map(priceChangesToBananas)
