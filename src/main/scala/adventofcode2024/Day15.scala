@@ -12,7 +12,6 @@ object Day15:
     yield (x, y)
 
   def drawWarehouse(things: Map[(Int, Int), Char], width: Int, height: Int): String =
-    val wareHouse = createGrid(width, height)
     createGrid(width, height).map:
       case (0, y) => "\n" + things.getOrElse((0, y), '.')
       case (x, y) => things.getOrElse((x, y), '.')
