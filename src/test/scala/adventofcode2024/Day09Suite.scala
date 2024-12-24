@@ -35,7 +35,6 @@ class Day09Suite extends FunSuite:
     val checksum    = fileChecksum(movedBlocks)
     assertEquals(checksum, 2858L)
 
-  // warning: this takes forever, but it works
   test("moves files for the input"):
     val diskmap     = importLines()
     val blocks      = createBlocks(diskmap)

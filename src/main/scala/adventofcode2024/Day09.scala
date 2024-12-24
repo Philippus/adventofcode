@@ -19,6 +19,7 @@ object Day09:
         .updated(blocks.indexWhere(_.==(-1)), blocks(blocks.lastIndexWhere(!_.==(-1))))
         .updated(blocks.lastIndexWhere(!_.==(-1)), -1))
 
+  // warning: this takes forever, but it works
   def moveBlocksPartTwo(blocks: Seq[Int]): Seq[Int] =
     @tailrec
     def loop(blocks: Seq[Int], files: Seq[Int]): Seq[Int] =
