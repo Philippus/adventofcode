@@ -15,6 +15,14 @@ class Day03Suite extends FunSuite:
     val wires = handleLines(importLines())
     assertEquals(manhattanDistanceOfClosestIntersection(wires.head, wires.last), 1195)
 
+  test("finds fewest combined steps to an intersection for the sample"):
+    val wires = handleLines(importSampleLines())
+    assertEquals(findFewestCombinedStepsToIntersection(wires), 30)
+
+  test("finds fewest combined steps to an intersection for the input"):
+    val wires = handleLines(importLines())
+    assertEquals(findFewestCombinedStepsToIntersection(wires), 91518)
+
   def importSampleLines(): Seq[String] =
     Using.resource(Source.fromResource("2019/day03sampleinput.txt")): source =>
       source.getLines().toSeq
