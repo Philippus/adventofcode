@@ -15,6 +15,14 @@ class Day06Suite extends FunSuite:
     val objects = importLines()
     assertEquals(orbits(objects), 119831L)
 
+  test("determines orbital transfers between YOU and SAN for the sample"):
+    val objects = importSampleLines() ++ List(("K", "YOU"), ("I", "SAN"))
+    assertEquals(orbitalTransfersBetweenYOUAndSAN(objects), 4L)
+
+  test("determines orbital transfers between YOU and SAN for the input"):
+    val objects = importLines()
+    assertEquals(orbitalTransfersBetweenYOUAndSAN(objects), 322L)
+
   def importSampleLines(): List[(String, String)] =
     Using.resource(
       Source.fromResource(s"2019/${this.getClass.getSimpleName.toLowerCase.replace("suite", "")}sampleinput.txt")
