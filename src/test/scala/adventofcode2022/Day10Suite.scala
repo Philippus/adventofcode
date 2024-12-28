@@ -15,6 +15,10 @@ class Day10Suite extends FunSuite:
     val instructions = importSampleLines()
     assertEquals(followInstructions(instructions), 13140)
 
+  test("draw capital letters on the CRT"):
+    val instructions = importLines()
+    drawLettersOnCRT(instructions) // EHBZLRJR
+
   test("determines signal strengths for the input"):
     val instructions = importLines()
     assertEquals(followInstructions(instructions), 12640)

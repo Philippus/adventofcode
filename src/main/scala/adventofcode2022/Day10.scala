@@ -25,6 +25,29 @@ object Day10:
 
     loop(instructions, 1, 1, Seq.empty)
 
+  def drawLettersOnCRT(instructions: Seq[String]): Unit =
+    @tailrec
+    def loop(instructions: Seq[String], cycle: Int, registerX: Int, position: Int, acc: String): Unit =
+      if instructions.isEmpty then
+        println(acc.grouped(40).mkString("\n"))
+      else
+        instructions.head match
+          case "noop"     =>
+            val char = if (Seq(registerX - 1, registerX, registerX + 1).contains(position % 40)) '#' else '.'
+            loop(instructions.tail, cycle + 1, registerX, position + 1, acc :+ char)
+          case s"addx $i" =>
+            val char1 = if (Seq(registerX - 1, registerX, registerX + 1).contains(position % 40)) '#' else '.'
+            val char2 = if (Seq(registerX - 1, registerX, registerX + 1).contains((position + 1) % 40)) '#' else '.'
+            loop(
+              instructions.tail,
+              cycle + 2,
+              registerX + i.toInt,
+              position + 2,
+              acc ++ (char1.toString + char2.toString)
+            )
+
+    loop(instructions, 1, 1, 0, "")
+
   def importLines(): Seq[String] =
     Using.resource(Source.fromResource("2022/day10input.txt")): source =>
       source.getLines().toSeq
