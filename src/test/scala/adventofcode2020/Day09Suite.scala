@@ -15,6 +15,14 @@ class Day09Suite extends FunSuite:
     val numbers = importLines()
     assertEquals(findFirstWrongNumber(numbers, 25), 2089807806L)
 
+  test("finds encryption weakness for the sample"):
+    val numbers = importSampleLines()
+    assertEquals(findEncryptionWeakness(numbers, findFirstWrongNumber(numbers, 5)), 62L)
+
+  test("finds encryption weakness for the input"):
+    val numbers = importLines()
+    assertEquals(findEncryptionWeakness(numbers, findFirstWrongNumber(numbers, 25)), 245848639L)
+
   def importSampleLines(): List[Long] =
     Using.resource(
       Source.fromResource(s"2020/${this.getClass.getSimpleName.toLowerCase.replace("suite", "")}sampleinput.txt")

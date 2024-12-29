@@ -14,6 +14,17 @@ object Day09:
             .contains(window.last) => window.last
     .get
 
+  def findEncryptionWeakness(numbers: List[Long], target: Long): Long =
+    @tailrec
+    def loop(sliding: Int): Long =
+      if numbers.sliding(sliding).exists(_.sum == target) then
+        val l = numbers.sliding(sliding).find(_.sum == target).get
+        l.min + l.max
+      else
+        loop(sliding + 1)
+
+    loop(2)
+
   def importLines(): List[Long] =
     Using.resource(Source.fromResource(s"2020/${this.getClass.getSimpleName.toLowerCase.replace("$", "")}input.txt")):
       source =>
