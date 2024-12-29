@@ -1,6 +1,5 @@
 package adventofcode2020
 
-import scala.concurrent.duration.Duration
 import scala.io.Source
 import scala.util.Using
 
