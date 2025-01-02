@@ -24,6 +24,17 @@ object Day06:
       coordinatesClosestToBorder.map(_._1).contains(p._1)
     finiteArea.groupBy(_._2).maxBy(_._2.length)._2.length
 
+  def sizeOfRegion(coordinates: Vector[Pos], safeDistance: Int): Int =
+    (for
+      x <- coordinates.minBy(_.x).x to coordinates.maxBy(_.x).x
+      y <- coordinates.minBy(_.y).y to coordinates.maxBy(_.y).y
+      totalDistance = coordinates.map: coordinate =>
+        math.abs(x - coordinate.x) + math.abs(y - coordinate.y)
+      .sum
+      if totalDistance < safeDistance
+    yield
+      Pos(x, y)).length
+
   def handleLines(lines: Seq[String]): Vector[Pos] =
     lines.map:
       case s"$x, $y" => Pos(x.toInt, y.toInt)

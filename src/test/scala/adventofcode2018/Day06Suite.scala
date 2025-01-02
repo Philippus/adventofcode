@@ -15,6 +15,14 @@ class Day06Suite extends FunSuite:
     val lines = importLines()
     assertEquals(sizeOfAreaThatIsntInfinite(handleLines(lines)), 4290)
 
+  test("finds a safe region for the sample"):
+    val lines = importSampleLines()
+    assertEquals(sizeOfRegion(handleLines(lines), 32), 16)
+
+  test("finds a safe region for the input"):
+    val lines = importLines()
+    assertEquals(sizeOfRegion(handleLines(lines), 10000), 37318)
+
   def importSampleLines(): List[String] =
     Using.resource(
       Source.fromResource(s"2018/${this.getClass.getSimpleName.toLowerCase.replace("suite", "")}sampleinput.txt")
