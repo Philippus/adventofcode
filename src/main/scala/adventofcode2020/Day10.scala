@@ -24,9 +24,9 @@ object Day10:
           case 1 :: 1 :: 1 :: 3 :: _      => loop(adapterDiffs.drop(4), acc * 4)
           case 1 :: 1 :: 1 :: 1 :: 3 :: _ => loop(adapterDiffs.drop(5), acc * 7)
 
-    val arr = (0 +: adapters :+ adapters.max + 3).sorted.sliding(2).toList.map:
+    val adapterDiffs = (0 +: adapters :+ adapters.max + 3).sorted.sliding(2).toList.map:
       case Seq(a, b) => b - a
-    loop(arr, 1L)
+    loop(adapterDiffs, 1L)
 
   def importLines(): List[Int] =
     Using.resource(Source.fromResource(s"2020/${this.getClass.getSimpleName.toLowerCase.replace("$", "")}input.txt")):
