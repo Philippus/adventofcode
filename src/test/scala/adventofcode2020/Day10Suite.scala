@@ -15,6 +15,14 @@ class Day10Suite extends FunSuite:
     val adapters = importLines()
     assertEquals(countJoltageDifferences(adapters), 2277)
 
+  test("counts arrangements of adapters for the sample"):
+    val adapters = importSampleLines()
+    assertEquals(countArrangements(adapters), 8L)
+
+  test("counts arrangements of adapters for the input"):
+    val adapters = importLines()
+    assertEquals(countArrangements(adapters), 37024595836928L)
+
   def importSampleLines(): List[Int] =
     Using.resource(
       Source.fromResource(s"2020/${this.getClass.getSimpleName.toLowerCase.replace("suite", "")}sampleinput.txt")
