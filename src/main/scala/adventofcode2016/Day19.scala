@@ -32,6 +32,24 @@ object Day19:
       buf += i
     loop()
 
+  // https://en.wikipedia.org/wiki/Josephus_problem
+  def getSafePosition(n: Int): Int =
+    val valueOfL = n - Integer.highestOneBit(n);
+    2 * valueOfL + 1;
+
+  def stealPresentsDirectlyAcrossTheCircle(elves: Int): Int =
+    val elvesVector = 1.to(elves).toVector
+    var leftElves   = elvesVector.take(elvesVector.length / 2)
+    var rightElves  = elvesVector.drop(elvesVector.length / 2)
+    while leftElves.nonEmpty do
+      rightElves = rightElves.drop(1)
+      if leftElves.length == rightElves.length then // balance the "halves"
+        leftElves = leftElves ++ rightElves.take(1)
+        rightElves = rightElves.drop(1)
+      rightElves = rightElves ++ leftElves.take(1)
+      leftElves = leftElves.drop(1)
+    rightElves.head
+
   def importLines(): Int =
     Using.resource(Source.fromResource(s"2016/${this.getClass.getSimpleName.toLowerCase.replace("$", "")}input.txt")):
       source =>
