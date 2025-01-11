@@ -13,6 +13,20 @@ object Day22:
       if nodes.filterNot(_.==(node)).exists(otherNode => node.used <= otherNode.avail)
     yield node).length
 
+  def createGrid(width: Int, height: Int): Seq[(Int, Int)] =
+    for
+      y <- 0 until height
+      x <- 0 until width
+    yield (x, y)
+
+  def drawGrid(nodes: Seq[Node]): String =
+    createGrid(nodes.maxBy(_.x).x + 1, nodes.maxBy(_.y).y + 1).map:
+      case (x, y) => (if x == 0 then "\n" else "") + {
+        val usePerc = nodes.find(node => node.x == x && node.y == y).get.usePerc
+        if (x, y) == (nodes.maxBy(_.x).x, 0) then 'G' else if usePerc == 0 then '_' else if usePerc > 90 then '#' else '.'
+      }
+    .mkString
+
   def parseLine(line: String): Node =
     line match
       case s"/dev/grid/node-x$x-y$y ${size}T ${used}T ${avail}T ${usePerc}%" =>
