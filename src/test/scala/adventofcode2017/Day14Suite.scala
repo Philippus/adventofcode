@@ -15,4 +15,13 @@ class Day14Suite extends FunSuite:
 
   test("counts used squares for the input"):
     assertEquals(countUsedSquares(importLines()), 8074)
+
+  test("draws the map"):
+    println(drawGrid(createMapFromHash("flqrgnkx")))
+
+  test("counts regions for the sample"):
+    assertEquals(countRegions("flqrgnkx"), 1242)
+
+  test("counts regions for the input"):
+    assertEquals(countRegions(importLines()), 1212)
 end Day14Suite
