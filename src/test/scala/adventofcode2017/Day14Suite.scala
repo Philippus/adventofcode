@@ -1,19 +1,18 @@
 package adventofcode2017
 
-import adventofcode2017.Day10.*
 import adventofcode2017.Day14.*
 import munit.FunSuite
 
 class Day14Suite extends FunSuite:
-  test("hashtobits"):
-    assertEquals(hashToBits("a0c2017"), "1010000011000010000000010111")
+  test("converts a hash to bits"):
+    assertEquals(hashToBits("a0c20170"), "10100000110000100000000101110000")
 
-  test("knot"):
-    val a = stringToLengthsAndSuffix("flqrgnkx-0")
-    assertEquals(hashToBits(Day10.processLengthsAsAscii(0.to(255), a)).take(8), "11010100")
+  test("creates knot hashes"):
+    assertEquals(knotHash("flqrgnkx-0").take(8), "11010100")
 
-  test("all knots"):
-    val a = 0.to(127).map(i => stringToLengthsAndSuffix(s"jzgqcdpd-$i"))
-    val b = a.map(aa => hashToBits(Day10.processLengthsAsAscii(0.to(255), aa)))
-    assertEquals(b.map(c => c.count(d => d.==('1'))).sum, 3)
+  test("counts used squares for the sample"):
+    assertEquals(countUsedSquares("flqrgnkx"), 8108)
+
+  test("counts used squares for the input"):
+    assertEquals(countUsedSquares(importLines()), 8074)
 end Day14Suite
