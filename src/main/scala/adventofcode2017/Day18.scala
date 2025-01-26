@@ -209,7 +209,7 @@ object Day18:
 
     def apply(instructions: Seq[String]): Behavior[Any] =
       Behaviors.setup: context =>
-        Behaviors.withTimers { timers =>
+        Behaviors.withTimers: timers =>
           val programZero = context.spawn(new Program(0, instructions)(), "zero")
           val programOne  = context.spawn(new Program(1, instructions)(), "one")
 
@@ -237,7 +237,6 @@ object Day18:
                   Behaviors.same
                 else
                   Behaviors.same
-        }
   end HelloWorldMain
 
   def readInputFile(): Seq[String] =
