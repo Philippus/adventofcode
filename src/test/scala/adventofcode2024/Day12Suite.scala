@@ -15,6 +15,14 @@ class Day12Suite extends FunSuite:
     val map = handleLines(importLines())
     assertEquals(totalPriceOfFencingAllRegions(map), 1461752L)
 
+  test("determines discounted price of fencing all regions for the sample"):
+    val map = handleLines(importSampleLines())
+    assertEquals(discountedTotalPriceOfFencingAllRegions(map), 80L)
+
+  test("determines discounted price of fencing all regions for the input"):
+    val map = handleLines(importLines())
+    assertEquals(discountedTotalPriceOfFencingAllRegions(map), 904114L)
+
   def importSampleLines(): List[String] =
     Using.resource(
       Source.fromResource(s"2024/${this.getClass.getSimpleName.toLowerCase.replace("suite", "")}sampleinput.txt")
