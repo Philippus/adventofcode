@@ -1,8 +1,5 @@
 package adventofcode2018
 
-import scala.io.Source
-import scala.util.Using
-
 import adventofcode2018.Day16.*
 import munit.FunSuite
 
@@ -18,11 +15,4 @@ class Day16Suite extends FunSuite:
   test("determines opcodes and executes test program"):
     val (samples, instructions) = handleLines(importLines())
     assertEquals(determineOpcodesAndExecuteTestProgram(samples, instructions), 622)
-
-  def importSampleLines(): (Int, Int) =
-    Using.resource(
-      Source.fromResource(s"2018/${this.getClass.getSimpleName.toLowerCase.replace("suite", "")}sampleinput.txt")
-    ): source =>
-      source.getLines().next() match
-        case s"$n players; last marble is worth $ps points" => (n.toInt, ps.toInt)
 end Day16Suite
