@@ -15,6 +15,10 @@ class Day12Suite extends FunSuite:
     val (pots, notes) = handleLines(importLines())
     assertEquals(grow(pots, notes, 20), 3276L)
 
+  test("grows the pots for the input"):
+    val (pots, notes) = handleLines(importLines())
+    assertEquals(potsAfter50000000000Generations(pots, notes), 3750000001113L)
+
   def importSampleLines(): Vector[String] =
     Using.resource(
       Source.fromResource(s"2018/${this.getClass.getSimpleName.toLowerCase.replace("suite", "")}sampleinput.txt")

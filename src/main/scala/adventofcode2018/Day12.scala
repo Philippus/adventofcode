@@ -21,6 +21,12 @@ object Day12:
 
     loop(pots, 0)
 
+  def potsAfter50000000000Generations(pots: String, notes: Map[String, Char]): Long =
+    val after2500 = grow(pots, notes, 2500)
+    val after2501 = grow(pots, notes, 2501)
+    val diff      = after2501 - after2500
+    (50000000000L - 2500) * diff + after2500
+
   def handleLines(lines: Vector[String]): (String, Map[String, Char]) =
     val pots  = lines.head.substring("initial state: ".length)
     val notes = lines.drop(2).map:
