@@ -59,6 +59,30 @@ object Day18:
     val newMap = magicForest(map, minutes)
     newMap.count(_._2 == '|') * newMap.count(_._2 == '#')
 
+  def detectCycle(map: Map[Pos, Char]): Int =
+    def withinBounds(p: Pos): Boolean =
+      p.x >= 0 && p.x <= map.maxBy(_._1.x)._1.x && p.y >= 0 && p.y <= map.maxBy(_._1.y)._1.y
+
+    @tailrec
+    def loop(map: Map[Pos, Char], minute: Int, seen: Vector[Int]): Int =
+      if seen.size >= 20 && seen.dropRight(10).containsSlice(seen.takeRight(10)) then
+        seen.indexOfSlice(seen.takeRight(10)) - 1
+      else
+        val newMap = map.map:
+          case (p, c) if c == '.' =>
+            if p.adjacent.filter(withinBounds).count(p => map(p) == '|') >= 3 then (p, '|') else (p, c)
+          case (p, c) if c == '|' =>
+            if p.adjacent.filter(withinBounds).count(p => map(p) == '#') >= 3 then (p, '#') else (p, c)
+          case (p, c) if c == '#' =>
+            if p.adjacent.filter(withinBounds).count(p => map(p) == '#') >= 1 && p.adjacent.filter(withinBounds).count(
+                p => map(p) == '|'
+              ) >= 1
+            then (p, '#')
+            else (p, '.')
+        loop(newMap, minute + 1, seen :+ (newMap.count(_._2 == '|') * newMap.count(_._2 == '#')))
+
+    loop(map, 0, Vector.empty[Int])
+
   def parse(line: String, y: Int): Map[Pos, Char] =
     line.zipWithIndex.collect:
       case (char, x) => Pos(x, y) -> char
