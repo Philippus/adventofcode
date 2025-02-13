@@ -30,7 +30,7 @@ object Day22:
   def parseLine(line: String): Node =
     line match
       case s"/dev/grid/node-x$x-y$y ${size}T ${used}T ${avail}T ${usePerc}%" =>
-        Node(x.toInt, y.toInt, size.strip.toInt, used.strip.toInt, avail.strip.toInt, usePerc.strip.toInt)
+        Node(x.toInt, y.toInt, size.trim.toInt, used.trim.toInt, avail.trim.toInt, usePerc.trim.toInt)
 
   def importLines(): Seq[String] =
     Using.resource(Source.fromResource(s"2016/${this.getClass.getSimpleName.toLowerCase.replace("$", "")}input.txt")):
