@@ -2,7 +2,7 @@
 
 Solutions are in Scala 3.
 
-Find other solutions written in Scala [here](https://scalacenter.github.io/scala-advent-of-code/2023/)
+Find other solutions written in Scala [here](https://scalacenter.github.io/scala-advent-of-code/)
 
 ## License
 
