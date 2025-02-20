@@ -1,6 +1,5 @@
 package adventofcode2018
 
-//import scala.collection.mutable.Map
 import scala.io.Source
 import scala.util.Using
 
@@ -17,25 +16,28 @@ object Day13:
       carts: Vector[((Pos, Char), Int)],
       removeCarts: Boolean = false
   ): Pos =
-    def loop(carts: Vector[((Pos, Char), Int)]): Pos =
-      if removeCarts && carts.length == 1 then
-        carts.head._1._1
-      else
-        val newCarts              = carts.sortBy(c => (c._1._1.y, c._1._1.x)).to(collection.mutable.ListBuffer)
-        var crashPos: Option[Pos] = None
-        carts.foreach: cart =>
+    if removeCarts && carts.length == 1 then
+      carts.head._1._1
+    else
+      var crashPos: Option[Pos] = None
+      val newCarts              = carts.to(collection.mutable.ListBuffer)
+      while crashPos.isEmpty && newCarts.length > 1 do
+        newCarts.sortBy(c => (c._1._1.y, c._1._1.x)).foreach: cart =>
           if newCarts.contains(cart) then
             cart match
               case ((p, '^'), _) if newCarts.exists(_._1._1 == p.north) =>
                 if !removeCarts then
-                  crashPos = crashPos.orElse(Some(p.north)) // crash
+                  crashPos = crashPos.orElse(Some(p.north))
                 else
                   newCarts.remove(newCarts.indexWhere(cart => cart._1._1 == p))
                   newCarts.remove(newCarts.indexWhere(cart => cart._1._1 == p.north))
               case ((p, '^'), turn)                                     => map(p.north) match
-                  case '|'  => newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '^')), ((p.north, '^'), turn))
-                  case '/'  => newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '^')), ((p.north, '>'), turn))
-                  case '\\' => newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '^')), ((p.north, '<'), turn))
+                  case '|'  =>
+                    newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '^')), ((p.north, '^'), turn))
+                  case '/'  =>
+                    newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '^')), ((p.north, '>'), turn))
+                  case '\\' =>
+                    newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '^')), ((p.north, '<'), turn))
                   case '+'  => turn % 3 match
                       case 0 =>
                         newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '^')), ((p.north, '<'), turn + 1))
@@ -43,17 +45,17 @@ object Day13:
                         newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '^')), ((p.north, '^'), turn + 1))
                       case 2 =>
                         newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '^')), ((p.north, '>'), turn + 1))
-              // intersection
               case ((p, '>'), _) if newCarts.exists(_._1._1 == p.east)  =>
                 if !removeCarts then
-                  crashPos = crashPos.orElse(Some(p.east)) // crash
+                  crashPos = crashPos.orElse(Some(p.east))
                 else
                   newCarts.remove(newCarts.indexWhere(cart => cart._1._1 == p))
                   newCarts.remove(newCarts.indexWhere(cart => cart._1._1 == p.east))
               case ((p, '>'), turn)                                     => map(p.east) match
                   case '-'  => newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '>')), ((p.east, '>'), turn))
                   case '/'  => newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '>')), ((p.east, '^'), turn))
-                  case '\\' => newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '>')), ((p.east, 'v'), turn))
+                  case '\\' =>
+                    newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '>')), ((p.east, 'v'), turn))
                   case '+'  => turn % 3 match
                       case 0 =>
                         newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '>')), ((p.east, '^'), turn + 1))
@@ -63,14 +65,17 @@ object Day13:
                         newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '>')), ((p.east, 'v'), turn + 1))
               case ((p, 'v'), _) if newCarts.exists(_._1._1 == p.south) =>
                 if !removeCarts then
-                  crashPos = crashPos.orElse(Some(p.south)) // crash
+                  crashPos = crashPos.orElse(Some(p.south))
                 else
                   newCarts.remove(newCarts.indexWhere(cart => cart._1._1 == p))
                   newCarts.remove(newCarts.indexWhere(cart => cart._1._1 == p.south))
               case ((p, 'v'), turn)                                     => map(p.south) match
-                  case '|'  => newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, 'v')), ((p.south, 'v'), turn))
-                  case '/'  => newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, 'v')), ((p.south, '<'), turn))
-                  case '\\' => newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, 'v')), ((p.south, '>'), turn))
+                  case '|'  =>
+                    newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, 'v')), ((p.south, 'v'), turn))
+                  case '/'  =>
+                    newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, 'v')), ((p.south, '<'), turn))
+                  case '\\' =>
+                    newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, 'v')), ((p.south, '>'), turn))
                   case '+'  => turn % 3 match
                       case 0 =>
                         newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, 'v')), ((p.south, '>'), turn + 1))
@@ -80,14 +85,15 @@ object Day13:
                         newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, 'v')), ((p.south, '<'), turn + 1))
               case ((p, '<'), _) if newCarts.exists(_._1._1 == p.west)  =>
                 if !removeCarts then
-                  crashPos = crashPos.orElse(Some(p.west)) // crash
+                  crashPos = crashPos.orElse(Some(p.west))
                 else
                   newCarts.remove(newCarts.indexWhere(cart => cart._1._1 == p))
                   newCarts.remove(newCarts.indexWhere(cart => cart._1._1 == p.west))
               case ((p, '<'), turn)                                     => map(p.west) match
                   case '-'  => newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '<')), ((p.west, '<'), turn))
                   case '/'  => newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '<')), ((p.west, 'v'), turn))
-                  case '\\' => newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '<')), ((p.west, '^'), turn))
+                  case '\\' =>
+                    newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '<')), ((p.west, '^'), turn))
                   case '+'  => turn % 3 match
                       case 0 =>
                         newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '<')), ((p.west, 'v'), turn + 1))
@@ -95,8 +101,7 @@ object Day13:
                         newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '<')), ((p.west, '<'), turn + 1))
                       case 2 =>
                         newCarts.update(newCarts.indexWhere(cart => cart._1 == (p, '<')), ((p.west, '^'), turn + 1))
-        crashPos.getOrElse(loop(newCarts.toVector))
-    loop(carts)
+      crashPos.getOrElse(newCarts.head._1._1)
 
   def readCarts(line: String, y: Int): Vector[((Pos, Char), Int)] =
     line.zipWithIndex.toVector.collect:
