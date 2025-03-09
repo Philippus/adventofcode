@@ -22,5 +22,5 @@ libraryDependencies ++= Seq(
   "nl.gn0s1s"        %% "between"                   % "0.6.0",
   "org.apache.pekko" %% "pekko-actor-typed"         % "1.1.3",
   "org.apache.pekko" %% "pekko-actor-testkit-typed" % "1.1.3" % Test,
-  "ch.qos.logback"    % "logback-classic"           % "1.5.16"
+  "ch.qos.logback"    % "logback-classic"           % "1.5.17"
 )
