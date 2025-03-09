@@ -11,7 +11,7 @@ developers := List(
   )
 )
 
-scalaVersion := "3.6.3"
+scalaVersion := "3.6.4"
 
 mainClass.withRank(KeyRanks.Invisible) := Some("adventofcode2024.day1.Day1")
 
