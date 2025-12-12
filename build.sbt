@@ -22,7 +22,7 @@ libraryDependencies ++= Seq(
   "nl.gn0s1s"         %% "between"                   % "0.6.0",
   "org.apache.pekko"  %% "pekko-actor-typed"         % "1.3.0",
   "org.apache.pekko"  %% "pekko-actor-testkit-typed" % "1.3.0" % Test,
-  "ch.qos.logback"     % "logback-classic"           % "1.5.21",
+  "ch.qos.logback"     % "logback-classic"           % "1.5.22",
   "com.github.vagmcs" %% "optimus"                   % "3.4.5",
   "com.github.vagmcs" %% "optimus-solver-oj"         % "3.4.5"
 )
