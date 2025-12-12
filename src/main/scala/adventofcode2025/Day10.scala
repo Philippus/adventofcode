@@ -109,8 +109,8 @@ object Day10:
    expressions:
      c0 => a4 * b4 + a5 * b5 := 3
      c1 => a1 * b1 + a5 * b5 := 5
-     c2 => a2 * b2 + a3 + b3 + a4 + b4 := 4
-     c3 => a0 * b0 + a1 + b1 + a3 * b3 := 7
+     c2 => a2 * b2 + a3 * b3 + a4 * b4 := 4
+     c3 => a0 * b0 + a1 * b1 + a3 * b3 := 7
      */
     val constraints = machine.joltageReqs.zipWithIndex.map: (joltageReq, idx) =>
       machine.wiring.zipWithIndex.filter(_._1.contains(idx)).map: (_, buttonIdx) =>
