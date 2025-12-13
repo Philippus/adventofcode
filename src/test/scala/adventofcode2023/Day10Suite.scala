@@ -32,4 +32,8 @@ class Day10Suite extends FunSuite:
 
   test("finds max distance in the big grid"):
     assertEquals(findMaxInBigGrid(), 6956)
+
+  test("counts enclosed tiles by the loop"):
+    val grid = importAsGrid()
+    assertEquals(countEnclosedTiles(grid), 455)
 end Day10Suite

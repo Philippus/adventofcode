@@ -53,6 +53,44 @@ object Day10:
       x <- 0.until(lineWithIndex._1.length)
     yield grid(lineWithIndex._2)(x) = (lineWithIndex._1.charAt(x), -1)
 
+  def getPositions: List[Pos] =
+    val positions  = scala.collection.mutable.ListBuffer.empty[Pos]
+    importLines()
+    val startPos   = findStartPos(grid)
+    grid(startPos.y)(startPos.x) = ('7', 0)
+    var currentPos = startPos
+    positions.addOne(currentPos)
+    var done       = false
+    while (!done)
+      nextPos(grid, currentPos) match
+        case Some(value) =>
+          grid(value.y)(value.x) = (grid(value.y)(value.x)._1, grid(currentPos.y)(currentPos.x)._2 + 1)
+          currentPos = value
+          positions.addOne(currentPos)
+        case None        => done = true
+    positions.toList
+
+  def countEnclosedTiles(grid: Array[Array[Char]]): Int =
+    val grid      = importAsGrid()
+    val positions = getPositions
+    for
+      y <- grid.indices
+      x <- grid(y).indices
+    do
+      if !positions.contains(Pos(y, x)) then
+        grid(y)(x) = '.'
+    (for
+      y <- grid.indices
+      x <- grid(y).indices
+      if grid(y)(x) == '.' // || !positions.contains(Pos(y, x))
+      if grid(y).drop(x + 1).count(ch => List('|', '7', 'F', 'S').contains(ch)) % 2 == 1
+    yield 1).sum
+
+  def importAsGrid(): Array[Array[Char]] =
+    val input = Using.resource(Source.fromResource("2023/day10input.txt")): source =>
+      source.mkString
+    input.split("\n").map(_.toCharArray)
+
   def importLines(): Unit =
     Using.resource(Source.fromResource("2023/day10input.txt")): source =>
       source.getLines().toSeq.zipWithIndex.map(initializeGrid)
