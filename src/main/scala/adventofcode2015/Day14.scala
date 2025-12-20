@@ -21,15 +21,15 @@ object Day14:
       else
         val x                                              = reindeer.map(reindeer => (reindeer, traveled(reindeer, currentTime + 1)))
         val leadReindeer                                   = x.groupBy(_._2).toSeq.sortBy(-_._1).map(_._2).head.map(_._1)
-        val newScoresForLeadReinders: Seq[(Reindeer, Int)] = leadReindeer.map(leadReindeer =>
+        val newScoresForLeadReindeers: Seq[(Reindeer, Int)] = leadReindeer.map(leadReindeer =>
           scores
             .find(_._1 == leadReindeer)
             .map(score => (score._1, score._2 + 1)).get
         )
         loop(
           scores.filterNot(oldScore =>
-            newScoresForLeadReinders.exists(_._1 == oldScore._1)
-          ) ++ newScoresForLeadReinders,
+            newScoresForLeadReindeers.exists(_._1 == oldScore._1)
+          ) ++ newScoresForLeadReindeers,
           currentTime + 1
         )
     loop(reindeer.map(reindeer => (reindeer, 0)).toSet, 0)

@@ -12,19 +12,19 @@ class Day16Suite extends FunSuite:
     val str = drawGrid(map, 15, 15)
     println(s"$str")
 
-  test("finds lowest score for reinder for the sample"):
+  test("finds lowest score for reindeer for the sample"):
     val map = handleLines(importSampleLines())
     assertEquals(lowestScoreForReindeer(map), 7036L)
 
-  test("finds lowest score for reinder for the second sample"):
+  test("finds lowest score for reindeer for the second sample"):
     val map = handleLines(importSampleLines2())
     assertEquals(lowestScoreForReindeer(map), 11048L)
 
-  test("finds lowest score for reinder for a sample containing going west"):
+  test("finds lowest score for reindeer for a sample containing going west"):
     val map = handleLines(importSampleLines3())
     assertEquals(lowestScoreForReindeer(map), 4013L)
 
-  test("finds lowest score for reinder for the input"):
+  test("finds lowest score for reindeer for the input"):
     val map = handleLines(importLines())
     assertEquals(lowestScoreForReindeer(map), 135512L)
 
